@@ -14,7 +14,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { Slider } from "@/components/ui/slider";
 import { ExternalLink, ArrowRight, ArrowLeft } from "lucide-react";
 
-const projects = [
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  liveUrl: string;
+  tech: string[];
+}
+
+const projects: Project[] = [
   {
     id: 1,
     title: "E-Commerce Platform",
@@ -31,13 +40,12 @@ const projects = [
     liveUrl: "https://example.com/project2",
     tech: ["React", "Express", "MongoDB"],
   },
-  // Add more projects here...
 ];
 
 export function Projects() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [budget, setBudget] = useState([5000]);
 
   const projectsPerView = 3;
@@ -55,7 +63,7 @@ export function Projects() {
     );
   };
 
-  const handleRequestBuild = (project) => {
+  const handleRequestBuild = (project: Project) => {
     setSelectedProject(project);
     setIsFormOpen(true);
   };

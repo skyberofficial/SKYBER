@@ -7,17 +7,30 @@ export function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Disable scrolling when preloader is active
+    if (isLoading) {
+      document.body.style.overflow = 'hidden';
+    }
+
     const timer = setTimeout(() => {
       setIsLoading(false);
+      document.body.style.overflow = 'unset';
     }, 5000);
 
-    return () => clearTimeout(timer);
-  }, []);
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isLoading]);
 
   if (!isLoading) return null;
 
   return (
-    <div className="preloader">
+    <div 
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-background"
+      onContextMenu={(e) => e.preventDefault()}
+      style={{ pointerEvents: 'none' }}
+    >
       <motion.div
         className="preloader-logo text-[#17D492]"
         initial={{ scale: 0.5, opacity: 0 }}
