@@ -78,6 +78,11 @@
   }
   body {
     @apply bg-background text-foreground;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  body::-webkit-scrollbar {
+    display: none;
   }
   ::selection {
     @apply bg-[#67c9a7] text-white;
@@ -116,4 +121,24 @@
     opacity: .5;
     transform: scale(0.95);
   }
+}
+
+.back-to-top {
+  @apply fixed bottom-8 right-8 z-50 opacity-0 transition-all duration-300;
+}
+
+.back-to-top.visible {
+  @apply opacity-100;
+}
+
+.back-to-top button {
+  @apply bg-[#17D492] hover:bg-[#14c082] text-white rounded-full p-3 shadow-lg transition-transform hover:scale-110;
+}
+
+.project-slider {
+  @apply overflow-hidden relative;
+}
+
+.project-slider-track {
+  @apply flex transition-transform duration-300 ease-out;
 }
