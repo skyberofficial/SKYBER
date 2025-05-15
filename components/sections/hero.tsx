@@ -4,8 +4,17 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { ArrowRight, Shield, Lock, Zap } from "lucide-react";
+import { TypeWriter } from "@/components/ui/TypeWriter";
 
 export function Hero() {
+  const phrases = [
+    "Enhanced AI Security Features",
+    "Smart Cybersecurity & Tech",
+    "Secure Digital Experiences",
+    "Innovative Security Solutions",
+    "Secure, Develop, Design"
+  ];
+
   return (
     <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
       {/* Background gradient */}
@@ -24,7 +33,7 @@ export function Hero() {
           >
             <div className="inline-flex items-center px-3 py-1 rounded-full border border-border bg-background/50 backdrop-blur-sm text-sm font-medium mb-6">
               <span className="text-[#17D492] mr-2">New</span> 
-              <span className="text-foreground">Enhanced AI Security Features</span>
+              <TypeWriter phrases={phrases} typingSpeed={80} deletingSpeed={40} delayBetweenPhrases={3000} />
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">

@@ -135,10 +135,166 @@
   @apply bg-[#17D492] hover:bg-[#14c082] text-white rounded-full p-3 shadow-lg transition-transform hover:scale-110;
 }
 
+/* Project Slider Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .project-slider {
   @apply overflow-hidden relative;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
 .project-slider-track {
-  @apply flex transition-transform duration-300 ease-out;
+  @apply flex transition-all duration-700 ease-in-out;
+  will-change: transform;
+}
+
+.project-card-preloader {
+  @apply absolute inset-0 bg-card;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.project-card-content {
+  @apply opacity-0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.project-card.loaded .project-card-preloader {
+  @apply hidden;
+}
+
+.project-card.loaded .project-card-content {
+  @apply opacity-100;
+}
+
+/* Enhanced card animations */
+.project-card {
+  @apply relative transition-all duration-500;
+}
+
+.project-card-image {
+  @apply relative overflow-hidden;
+}
+
+.project-card-image::after {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300;
+}
+
+.project-card:hover .project-card-image::after {
+  @apply opacity-100;
+}
+
+/* Slider navigation enhancements */
+.slider-nav {
+  @apply absolute top-1/2 -translate-y-1/2 flex items-center justify-between w-full px-4 pointer-events-none;
+}
+
+.slider-nav button {
+  @apply pointer-events-auto bg-background/80 backdrop-blur-sm hover:bg-[#17D492] hover:text-white transition-all duration-300 rounded-full p-2;
+}
+
+/* Auto-scroll progress indicator */
+.auto-scroll-progress {
+  @apply absolute bottom-0 left-0 h-1 bg-[#17D492]/20;
+  width: 100%;
+}
+
+.auto-scroll-progress-bar {
+  @apply h-full bg-[#17D492] transition-all duration-300;
+  width: var(--progress, 0%);
+}
+
+/* Card loading skeleton */
+.skeleton-loader {
+  @apply relative overflow-hidden bg-muted;
+}
+
+.skeleton-loader::after {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Pause auto-scroll on hover */
+.project-slider:hover .project-slider-track {
+  animation-play-state: paused;
+}
+
+.project-slider:hover .auto-scroll-progress-bar {
+  animation-play-state: paused;
+}
+
+/* Add smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhance button hover effects */
+.button-hover-effect {
+  @apply relative overflow-hidden;
+}
+
+.button-hover-effect::after {
+  content: '';
+  @apply absolute inset-0 bg-white opacity-0 transition-opacity duration-300;
+}
+
+.button-hover-effect:hover::after {
+  @apply opacity-10;
+}
+
+/* Add card hover effects */
+.project-card {
+  @apply transition-all duration-300;
+}
+
+.project-card:hover {
+  @apply transform -translate-y-1;
+}
+
+/* Enhance slider navigation buttons */
+.slider-nav-button {
+  @apply transition-all duration-300 hover:bg-[#17D492] hover:text-white;
+}
+
+/* Add loading animation */
+.loading-animation {
+  @apply animate-pulse bg-gray-200;
+}
+
+/* Add fade animation */
+.fade-animation {
+  @apply transition-opacity duration-300;
+}
+
+.fade-animation:hover {
+  @apply opacity-90;
 }
