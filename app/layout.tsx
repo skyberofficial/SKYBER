@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme/theme-provider';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Preloader } from '@/components/preloader';
+import { useEffect } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,14 +19,22 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Apply scrollbar hiding styles
+  if (typeof document !== 'undefined') {
+    document.documentElement.style.setProperty('overflow-y', 'scroll');
+    document.documentElement.style.setProperty('scrollbar-width', 'none');
+    document.body.style.setProperty('overflow-y', 'scroll');
+    document.body.style.setProperty('scrollbar-width', 'none');
+  }
+
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning className="no-scrollbar">
+      <body className={`${inter.className} no-scrollbar`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Preloader />
-          <div className="flex min-h-screen flex-col">
+          <div className="flex min-h-screen flex-col no-scrollbar">
             <Header />
-            <main className="flex-grow">{children}</main>
+            <main className="flex-grow no-scrollbar">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>

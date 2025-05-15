@@ -64,7 +64,7 @@ const Header = () => {
           <div className="flex items-center space-x-8">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="px-0 flex items-center">
+                <Button variant="ghost" className="px-4 flex items-center">
                   Services <ChevronDown className="ml-1 w-4 h-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -94,7 +94,7 @@ const Header = () => {
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="px-0 flex items-center">
+                <Button variant="ghost" className="px-4 flex items-center">
                   Resources <ChevronDown className="ml-1 w-4 h-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -119,7 +119,7 @@ const Header = () => {
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="px-0 flex items-center">
+                <Button variant="ghost" className="px-4 flex items-center">
                   Company <ChevronDown className="ml-1 w-4 h-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -146,7 +146,7 @@ const Header = () => {
           <div className="flex items-center space-x-4">
             <ThemeSwitcher />
             <Button className="bg-[#17D492] hover:bg-[#14c082] text-white">
-              Get Started
+              Client Area
             </Button>
           </div>
         </nav>
@@ -158,7 +158,7 @@ const Header = () => {
             variant="ghost" 
             size="icon" 
             onClick={toggleMobileMenu} 
-            className="rounded-full"
+            className="rounded-full p-2"
           >
             {mobileMenuOpen ? (
               <X className="h-6 w-6" />
@@ -242,7 +242,7 @@ const Header = () => {
             </div>
 
             <Button className="w-full bg-[#17D492] hover:bg-[#14c082] text-white">
-              Get Started
+              Client Area
             </Button>
           </div>
         </div>

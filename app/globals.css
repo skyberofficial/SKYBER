@@ -2,6 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Disable text selection globally */
+* {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Enable text selection for specific elements that need it */
+input, textarea {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
+
+/* Hide scrollbar for all elements */
+* {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Ensure the html and body take full height and hide scrollbars */
+html, body {
+  height: 100%;
+  overflow-y: auto;
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Preloader styles */
+body.loading {
+  overflow: hidden !important;
+  pointer-events: none !important;
+  touch-action: none !important;
+}
+
+.preloader {
+  @apply fixed inset-0 z-[9999] flex items-center justify-center bg-background;
+  animation: fadeOut 0.5s ease-in-out 5s forwards;
+  pointer-events: auto !important;
+  touch-action: none !important;
+}
+
+.preloader-active {
+  overflow: hidden !important;
+  pointer-events: none !important;
+  touch-action: none !important;
+}
+
+/* Utility class for no scrollbar */
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -91,11 +163,6 @@
 
 .container {
   @apply max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8;
-}
-
-.preloader {
-  @apply fixed inset-0 z-50 flex items-center justify-center bg-background;
-  animation: fadeOut 0.5s ease-in-out 5s forwards;
 }
 
 .preloader-logo {
