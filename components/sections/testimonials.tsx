@@ -9,7 +9,7 @@ import Image from "next/image";
 const testimonials = [
   {
     id: 1,
-    quote: "Skyber transformed our cybersecurity infrastructure. Their team identified vulnerabilities we weren't even aware of and implemented robust security measures that have protected us from multiple potential breaches.",
+    quote: "<span className=\"skyber-text\">SKYBER</span> transformed our cybersecurity infrastructure. Their team identified vulnerabilities we weren't even aware of and implemented robust security measures that have protected us from multiple potential breaches.",
     author: "Alexandra Chen",
     position: "CTO, NexusFinance",
     company: "NexusFinance",
@@ -17,7 +17,7 @@ const testimonials = [
   },
   {
     id: 2,
-    quote: "The web application Skyber developed for us exceeded our expectations. Not only is it visually stunning, but the functionality and user experience are exceptional. Our customer engagement has increased significantly since launch.",
+    quote: "The web application <span className=\"skyber-text\">SKYBER</span> developed for us exceeded our expectations. Not only is it visually stunning, but the functionality and user experience are exceptional. Our customer engagement has increased significantly since launch.",
     author: "Marcus Johnson",
     position: "Marketing Director, EcoSolutions",
     company: "EcoSolutions",
@@ -25,7 +25,7 @@ const testimonials = [
   },
   {
     id: 3,
-    quote: "Working with Skyber on our custom software project was a seamless experience. They took the time to understand our unique needs and delivered a solution that has streamlined our operations and reduced costs by 35%.",
+    quote: "Working with <span className=\"skyber-text\">SKYBER</span> on our custom software project was a seamless experience. They took the time to understand our unique needs and delivered a solution that has streamlined our operations and reduced costs by 35%.",
     author: "Sophia Rodriguez",
     position: "Operations Manager, MedTech Innovations",
     company: "MedTech Innovations",

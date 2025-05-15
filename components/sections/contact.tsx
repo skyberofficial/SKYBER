@@ -111,7 +111,7 @@ export function Contact() {
             </div>
             
             <div className="bg-card rounded-lg p-6 border border-border">
-              <h4 className="font-medium mb-3">Looking for a career at Skyber?</h4>
+              <h4 className="font-medium mb-3">Looking for a career at <span className="skyber-text">SKYBER</span>?</h4>
               <p className="text-muted-foreground mb-4">
                 We're always looking for talented individuals to join our team. 
                 Check out our current openings.

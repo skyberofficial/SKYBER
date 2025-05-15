@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { ArrowRight, Shield, Lock, Zap } from "lucide-react";
 import { TypeWriter } from "@/components/ui/TypeWriter";
+import { AnimatedMesh } from "@/components/ui/animated-mesh";
 
 export function Hero() {
   const phrases = [
@@ -16,20 +17,20 @@ export function Hero() {
   ];
 
   return (
-    <section className="relative pt-24 md:pt-28 lg:pt-32 pb-16 md:pb-20 lg:pb-24 overflow-hidden">
+    <section className="relative h-screen overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b dark:from-background dark:to-background/60 from-background to-background/90 z-0" />
       
-      {/* Background pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] z-0"></div>
+      {/* Animated mesh background */}
+      <AnimatedMesh />
       
-      <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="container relative z-10 h-full flex items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center lg:text-left space-y-6 md:space-y-8"
+            className="text-center lg:text-left space-y-5 md:space-y-7"
           >
             <div className="inline-flex items-center px-3 py-1 rounded-full border border-border bg-background/50 backdrop-blur-sm text-sm font-medium">
               <span className="text-[#17D492] mr-2">New</span> 
@@ -38,10 +39,10 @@ export function Hero() {
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               Secure Your Digital<br className="hidden md:block" /> Future With{" "}
-              <span className="text-[#17D492]">Skyber</span>
+              <span className="text-[#17D492] skyber-text">SKYBER</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
+            <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0">
               Leading cybersecurity solutions and exceptional web development to protect your business and accelerate your online growth.
             </p>
             
@@ -55,24 +56,24 @@ export function Hero() {
               </Button>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 pt-4">
+            <div className="grid grid-cols-3 gap-3 pt-2">
               <div className="flex flex-col items-center lg:items-start">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#17D492]/10 mb-3">
+                <div className="flex items-center justify-center w-9 h-9 rounded-full bg-[#17D492]/10 mb-2">
                   <Shield className="w-5 h-5 text-[#17D492]" />
                 </div>
-                <p className="font-medium">99.9% Uptime</p>
+                <p className="font-medium text-sm">99.9% Uptime</p>
               </div>
               <div className="flex flex-col items-center lg:items-start">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#17D492]/10 mb-3">
+                <div className="flex items-center justify-center w-9 h-9 rounded-full bg-[#17D492]/10 mb-2">
                   <Lock className="w-5 h-5 text-[#17D492]" />
                 </div>
-                <p className="font-medium">SOC 2 Certified</p>
+                <p className="font-medium text-sm">SOC 2 Certified</p>
               </div>
               <div className="flex flex-col items-center lg:items-start">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#17D492]/10 mb-3">
+                <div className="flex items-center justify-center w-9 h-9 rounded-full bg-[#17D492]/10 mb-2">
                   <Zap className="w-5 h-5 text-[#17D492]" />
                 </div>
-                <p className="font-medium">24/7 Support</p>
+                <p className="font-medium text-sm">24/7 Support</p>
               </div>
             </div>
           </motion.div>
@@ -81,9 +82,9 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative mt-8 lg:mt-0"
+            className="relative mt-6 lg:mt-0"
           >
-            <div className="relative h-[350px] sm:h-[400px] lg:h-[500px] w-full">
+            <div className="relative h-[280px] sm:h-[320px] lg:h-[400px] w-full">
               <div className="absolute inset-0 bg-gradient-to-r from-[#17D492]/20 to-transparent rounded-lg"></div>
               <Image 
                 src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 

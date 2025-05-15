@@ -10,7 +10,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <Shield className="w-6 h-6 text-[#17D492]" />
-              <span className="font-bold text-xl">Skyber</span>
+              <span className="font-bold text-xl skyber-text">SKYBER</span>
             </div>
             <p className="text-muted-foreground mb-4">
               Providing cutting-edge cybersecurity and web development solutions to protect and propel your business.
@@ -122,7 +122,7 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground mb-4 md:mb-0">
-            © {new Date().getFullYear()} Skyber. All rights reserved.
+            © {new Date().getFullYear()} <span className="skyber-text">SKYBER</span>. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link href="#privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">

@@ -42,9 +42,9 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">About Skyber</h2>
-            <p className="text-lg text-muted-foreground mb-6">
-              Founded in 2013, Skyber has grown from a small security consulting firm to a comprehensive technology partner for businesses worldwide. Our mission is to secure and optimize your digital presence while driving innovation.
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">About <span className="skyber-text">SKYBER</span></h2>
+            <p className="text-muted-foreground mb-6">
+              Founded in 2013, <span className="skyber-text">SKYBER</span> has grown from a small security consulting firm to a comprehensive technology partner for businesses worldwide. Our mission is to secure and optimize your digital presence while driving innovation.
             </p>
             <p className="text-muted-foreground mb-8">
               We combine cutting-edge cybersecurity expertise with exceptional development capabilities to deliver solutions that are not just secure, but also intuitive, scalable, and aligned with your business objectives.
