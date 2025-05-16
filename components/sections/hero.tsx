@@ -17,20 +17,20 @@ export function Hero() {
   ];
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative min-h-screen md:min-h-[calc(100vh-5rem)] pt-16 md:pt-14 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b dark:from-background dark:to-background/60 from-background to-background/90 z-0" />
       
       {/* Animated mesh background */}
       <AnimatedMesh />
       
-      <div className="container relative z-10 h-full flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
+      <div className="container relative z-10 h-full flex items-start md:items-center py-8 md:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start md:items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center lg:text-left space-y-5 md:space-y-7"
+            className="text-center lg:text-left space-y-4 md:space-y-6"
           >
             <div className="inline-flex items-center px-3 py-1 rounded-full border border-border bg-background/50 backdrop-blur-sm text-sm font-medium">
               <span className="text-[#17D492] mr-2">New</span> 
@@ -56,7 +56,7 @@ export function Hero() {
               </Button>
             </div>
 
-            <div className="grid grid-cols-3 gap-3 pt-2">
+            <div className="grid grid-cols-3 gap-3 pt-2 md:pt-4">
               <div className="flex flex-col items-center lg:items-start">
                 <div className="flex items-center justify-center w-9 h-9 rounded-full bg-[#17D492]/10 mb-2">
                   <Shield className="w-5 h-5 text-[#17D492]" />

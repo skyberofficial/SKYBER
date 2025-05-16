@@ -120,13 +120,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet" />
       </head>
-      <body className={`${inter.className} no-scrollbar`}>
+      <body className={`${inter.className} no-scrollbar overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <PageSecurity />
           <Preloader />
-          <div className="flex min-h-screen flex-col no-scrollbar">
+          <div className="flex min-h-screen flex-col no-scrollbar overflow-x-hidden">
             <Header />
-            <main className="flex-grow no-scrollbar">{children}</main>
+            <main className="flex-grow no-scrollbar overflow-x-hidden">{children}</main>
             <Footer />
           </div>
           <SpeedInsights />

@@ -26,6 +26,13 @@ interface MegaMenuProps {
 export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
   const [activeTab, setActiveTab] = useState<string | null>(null);
 
+  const mainNavItems = [
+    { title: "About", href: "#about" },
+    { title: "Insights", href: "#insights" },
+    { title: "Portfolio", href: "#portfolio" },
+    { title: "Contact", href: "#contact" }
+  ];
+
   const menuItems = {
     services: {
       title: "Our Services",
@@ -143,6 +150,22 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
               </div>
 
               <div className="space-y-8">
+                {/* Main Navigation - Only visible on mobile/tablet */}
+                <div className="md:hidden">
+                  <div className="grid grid-cols-2 gap-4">
+                    {mainNavItems.map((item, index) => (
+                      <Link
+                        key={index}
+                        href={item.href}
+                        onClick={onClose}
+                        className="flex items-center justify-center p-3 rounded-lg border border-border hover:bg-secondary/50 hover:text-[#17D492] transition-colors font-medium"
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
                 {/* Services Section */}
                 <div>
                   <h3 className="text-lg font-semibold mb-4">{menuItems.services.title}</h3>
@@ -200,12 +223,12 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
           <AnimatePresence>
             {activeTab && (
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                className="fixed top-0 left-[400px] h-screen w-[500px] bg-background/50 backdrop-blur-md z-50 border-r border-border"
+                exit={{ opacity: 0, x: -20 }}
+                className="fixed top-0 right-0 h-screen w-[calc(100%-400px)] bg-background border-l border-border z-50 hidden lg:block"
               >
-                <div className="relative h-full w-full">
+                <div className="relative h-full">
                   <Image
                     src={
                       activeTab.startsWith("services")
@@ -216,20 +239,7 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-background/60 to-transparent" />
-                  
-                  <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-background/90 to-transparent">
-                    <h3 className="text-2xl font-bold mb-2">
-                      {activeTab.startsWith("services")
-                        ? menuItems.services.items[parseInt(activeTab.split("-")[1])].title
-                        : menuItems.industries.items[parseInt(activeTab.split("-")[1])].title}
-                    </h3>
-                    <p className="text-muted-foreground">
-                      {activeTab.startsWith("services")
-                        ? menuItems.services.items[parseInt(activeTab.split("-")[1])].description
-                        : menuItems.industries.items[parseInt(activeTab.split("-")[1])].description}
-                    </p>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-background to-transparent" />
                 </div>
               </motion.div>
             )}
