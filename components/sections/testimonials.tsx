@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
@@ -36,6 +37,11 @@ const testimonials = [
 export function Testimonials() {
   const [current, setCurrent] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
+
+  // Add CSS for skyber-text
+  const styles = {
+    skyberText: "font-bold text-[#17D492]"
+  };
 
   useEffect(() => {
     if (!autoplay) return;
@@ -83,7 +89,16 @@ export function Testimonials() {
                 className="text-center"
               >
                 <p className="text-lg md:text-xl mb-6 italic">
-                  "{testimonials[current].quote}"
+                  "
+                  <span 
+                    dangerouslySetInnerHTML={{ 
+                      __html: testimonials[current].quote.replace(
+                        /<span className="skyber-text">SKYBER<\/span>/g, 
+                        `<span class="${styles.skyberText}">SKYBER</span>`
+                      ) 
+                    }} 
+                  />
+                  "
                 </p>
                 
                 <div className="flex flex-col items-center">

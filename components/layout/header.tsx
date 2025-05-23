@@ -85,17 +85,21 @@ const Header = () => {
 
             <div className="flex items-center space-x-4">
               <ThemeSwitcher />
-              <Button className="bg-[#17D492] hover:bg-[#14c082] text-white">
-                Client Area
-              </Button>
+              <Link href="/client">
+                <Button className="bg-[#17D492] hover:bg-[#14c082] text-white">
+                  Client Area
+                </Button>
+              </Link>
             </div>
           </nav>
 
           <div className="flex md:hidden items-center space-x-4">
             <ThemeSwitcher />
-            <Button className="bg-[#17D492] hover:bg-[#14c082] text-white">
-              Client Area
-            </Button>
+            <Link href="/client">
+              <Button className="bg-[#17D492] hover:bg-[#14c082] text-white">
+                Client Area
+              </Button>
+            </Link>
           </div>
         </div>
       </header>
