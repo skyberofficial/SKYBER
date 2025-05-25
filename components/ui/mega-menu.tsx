@@ -17,6 +17,9 @@ import {
   X,
   ChevronRight
 } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { AnimatedButton } from "@/components/ui/animated-button";
 
 interface MegaMenuProps {
   isOpen: boolean;
@@ -25,6 +28,11 @@ interface MegaMenuProps {
 
 export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
   const [activeTab, setActiveTab] = useState<string | null>(null);
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHomePage = pathname === "/";
+  const isInsightsPage = pathname === "/insights";
+  const isPortfolioPage = pathname === "/portfolio";
 
   const mainNavItems = [
     { title: "About", href: "#about" },
@@ -106,6 +114,68 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
     }
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
+    e.preventDefault();
+    onClose();
+
+    // Special handling for insights page
+    if (section === "#insights") {
+      if (isInsightsPage) {
+        // If already on insights page, scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        // Navigate to insights page
+        router.push("/insights");
+      }
+      return;
+    }
+
+    // Special handling for about page
+    if (section === "#about") {
+      if (isHomePage) {
+        // If on home page, smooth scroll to about section
+        const element = document.querySelector(section);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        // If not on home page, navigate to about page
+        router.push("/about");
+      }
+      return;
+    }
+
+    // Special handling for portfolio page
+    if (section === "#portfolio") {
+      if (isPortfolioPage) {
+        // If already on portfolio page, scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        // Navigate to portfolio page
+        router.push("/portfolio");
+      }
+      return;
+    }
+
+    // Special handling for contact page
+    if (section === "#contact") {
+      router.push("/contact");
+      onClose();
+      return;
+    }
+
+    if (isHomePage) {
+      // If on home page, smooth scroll to section
+      const element = document.querySelector(section);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If not on home page, navigate to home page with section hash
+      router.push(`/${section}`);
+    }
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -154,14 +224,21 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
                 <div className="md:hidden">
                   <div className="grid grid-cols-2 gap-4">
                     {mainNavItems.map((item, index) => (
-                      <Link
+                      <a
                         key={index}
                         href={item.href}
-                        onClick={onClose}
-                        className="flex items-center justify-center p-3 rounded-lg border border-border hover:bg-secondary/50 hover:text-[#17D492] transition-colors font-medium"
+                        onClick={(e) => handleNavClick(e, item.href)}
+                        className={cn(
+                          "flex items-center justify-center p-3 rounded-lg border border-border hover:bg-secondary/50 hover:text-[#17D492] transition-colors font-medium",
+                          (item.href === "#insights" && isInsightsPage) ||
+                          (item.href === "#portfolio" && isPortfolioPage) ||
+                          (item.href === "#about" && pathname === "/about")
+                            ? "bg-secondary/50 text-[#17D492]"
+                            : ""
+                        )}
                       >
                         {item.title}
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 </div>

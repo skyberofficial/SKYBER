@@ -2,15 +2,21 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { ThemeSwitcher } from "@/components/theme/theme-switcher";
 import { Menu as MenuIcon } from "lucide-react";
+import { ThemeSwitcher } from "@/components/theme/theme-switcher";
 import { MegaMenu } from "@/components/ui/mega-menu";
+import { AnimatedButton } from "@/components/ui/animated-button";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHomePage = pathname === "/";
+  const isInsightsPage = pathname === "/insights";
+  const isPortfolioPage = pathname === "/portfolio";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +29,66 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [scrolled]);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
+    e.preventDefault();
+    
+    // Special handling for insights page
+    if (section === "#insights") {
+      if (isInsightsPage) {
+        // If already on insights page, scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        // Navigate to insights page
+        router.push("/insights");
+      }
+      return;
+    }
+
+    // Special handling for about page
+    if (section === "#about") {
+      if (isHomePage) {
+        // If on home page, smooth scroll to about section
+        const element = document.querySelector(section);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        // If not on home page, navigate to about page
+        router.push("/about");
+      }
+      return;
+    }
+
+    // Special handling for portfolio page
+    if (section === "#portfolio") {
+      if (isPortfolioPage) {
+        // If already on portfolio page, scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        // Navigate to portfolio page
+        router.push("/portfolio");
+      }
+      return;
+    }
+
+    // Special handling for contact page
+    if (section === "#contact") {
+      router.push("/contact");
+      return;
+    }
+
+    if (isHomePage) {
+      // If on home page, smooth scroll to section
+      const element = document.querySelector(section);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If not on home page, navigate to home page with section hash
+      router.push(`/${section}`);
+    }
+  };
 
   return (
     <>
@@ -38,14 +104,14 @@ const Header = () => {
       >
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <Button
+            <AnimatedButton
               variant="ghost"
               size="icon"
               className="rounded-full"
               onClick={() => setMegaMenuOpen(true)}
             >
               <MenuIcon className="h-6 w-6" />
-            </Button>
+            </AnimatedButton>
 
             <Link href="/" className="flex items-center space-x-2">
               <svg
@@ -66,40 +132,61 @@ const Header = () => {
 
           <nav className="hidden md:flex items-center space-x-8">
             <div className="flex items-center space-x-8">
-              <Link href="#about" className="px-4">
+              <a 
+                href="#about" 
+                onClick={(e) => handleNavClick(e, "#about")}
+                className="hover:bg-accent hover:text-accent-foreground rounded-full px-4 py-2 transition-colors"
+              >
                 About Us
-              </Link>
+              </a>
 
-              <Link href="#insights" className="px-4">
+              <a 
+                href="#insights" 
+                onClick={(e) => handleNavClick(e, "#insights")}
+                className={cn(
+                  "hover:bg-accent hover:text-accent-foreground rounded-full px-4 py-2 transition-colors",
+                  isInsightsPage && "bg-accent text-accent-foreground"
+                )}
+              >
                 Insights
-              </Link>
+              </a>
 
-              <Link href="#portfolio" className="px-4">
+              <a 
+                href="#portfolio" 
+                onClick={(e) => handleNavClick(e, "#portfolio")}
+                className={cn(
+                  "hover:bg-accent hover:text-accent-foreground rounded-full px-4 py-2 transition-colors",
+                  isPortfolioPage && "bg-accent text-accent-foreground"
+                )}
+              >
                 Portfolio
-              </Link>
+              </a>
 
-              <Link href="#contact" className="px-4">
+              <a 
+                href="#contact" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  router.push("/contact");
+                }}
+                className="hover:bg-accent hover:text-accent-foreground rounded-full px-4 py-2 transition-colors"
+              >
                 Contact Us
-              </Link>
+              </a>
             </div>
 
             <div className="flex items-center space-x-4">
               <ThemeSwitcher />
-              <Link href="/client">
-                <Button className="bg-[#17D492] hover:bg-[#14c082] text-white">
-                  Client Area
-                </Button>
-              </Link>
+              <AnimatedButton href="/client" className="bg-[#17D492] hover:bg-[#14c082] text-white">
+                Client Area
+              </AnimatedButton>
             </div>
           </nav>
 
           <div className="flex md:hidden items-center space-x-4">
             <ThemeSwitcher />
-            <Link href="/client">
-              <Button className="bg-[#17D492] hover:bg-[#14c082] text-white">
-                Client Area
-              </Button>
-            </Link>
+            <AnimatedButton href="/client" className="bg-[#17D492] hover:bg-[#14c082] text-white">
+              Client Area
+            </AnimatedButton>
           </div>
         </div>
       </header>

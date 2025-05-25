@@ -7,12 +7,36 @@ import Footer from '@/components/layout/footer';
 import { Preloader } from '@/components/preloader';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PageSecurity } from '@/components/security/page-security';
+import ClientLayout from './client-layout';
+import { StagewiseDevTools } from '@/components/dev/stagewise-toolbar';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  fallback: [
+    '-apple-system',
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    'sans-serif'
+  ]
+});
+
 const orbitron = Orbitron({ 
   subsets: ['latin'],
+  display: 'swap',
   weight: ['400', '500', '600', '700', '800', '900'],
-  variable: '--font-orbitron'
+  variable: '--font-orbitron',
+  fallback: [
+    'Arial',
+    'sans-serif'
+  ]
 });
 
 export const metadata: Metadata = {
@@ -115,21 +139,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={`no-scrollbar ${orbitron.variable}`}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet" />
-      </head>
       <body className={`${inter.className} no-scrollbar overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <PageSecurity />
-          <Preloader />
-          <div className="flex min-h-screen flex-col no-scrollbar overflow-x-hidden">
-            <Header />
-            <main className="flex-grow no-scrollbar overflow-x-hidden">{children}</main>
-            <Footer />
-          </div>
-          <SpeedInsights />
+          <ClientLayout>
+            <PageSecurity />
+            <Preloader />
+            <div className="flex min-h-screen flex-col no-scrollbar overflow-x-hidden">
+              <Header />
+              <main className="flex-grow no-scrollbar overflow-x-hidden">{children}</main>
+              <Footer />
+            </div>
+            <SpeedInsights />
+            <StagewiseDevTools />
+          </ClientLayout>
         </ThemeProvider>
       </body>
     </html>

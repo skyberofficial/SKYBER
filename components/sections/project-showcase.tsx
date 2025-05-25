@@ -1,7 +1,7 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Eye, Globe, Send } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import Lottie from "lottie-react";
 import cookingAnimation from "@/components/cooking.json";
@@ -338,9 +338,52 @@ function ProjectShowcase() {
     }
   };
 
+  const ProjectCardComponent = ({ project, index }: { project: ProjectCard; index: number }) => (
+    <div className="group relative w-[300px]">
+      <Card className="overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 ease-in-out transform hover:scale-[1.02] hover:shadow-xl hover:z-10 h-[345px] flex flex-col">
+        <div className="relative h-[200px]">
+          <img
+            src={project.imageUrl}
+            alt={project.title}
+            className="object-cover w-full h-full transition-all duration-500 ease-in-out group-hover:scale-105"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out" />
+          
+          {/* Action buttons that appear on hover */}
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out transform translate-y-4 group-hover:translate-y-0">
+            <button 
+              className="p-2 rounded-full bg-black/80 hover:bg-white text-[#00FF94] hover:text-black transition-all duration-300 backdrop-blur-sm dark:bg-white/10 dark:hover:bg-[#00FF94] dark:text-[#00FF94] dark:hover:text-black"
+              title="View Details"
+            >
+              <Eye className="w-5 h-5" />
+            </button>
+            <button 
+              className="p-2 rounded-full bg-black/80 hover:bg-white text-[#00FF94] hover:text-black transition-all duration-300 backdrop-blur-sm dark:bg-white/10 dark:hover:bg-[#00FF94] dark:text-[#00FF94] dark:hover:text-black"
+              title="See Live Preview"
+            >
+              <Globe className="w-5 h-5" />
+            </button>
+            <button 
+              className="p-2 rounded-full bg-black/80 hover:bg-white text-[#00FF94] hover:text-black transition-all duration-300 backdrop-blur-sm dark:bg-white/10 dark:hover:bg-[#00FF94] dark:text-[#00FF94] dark:hover:text-black"
+              title="Request Build"
+            >
+              <Send className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+        <div className="p-4 flex-1 flex flex-col">
+          <h4 className="font-semibold text-lg text-foreground">{project.title}</h4>
+          <p className="text-muted-foreground mt-2 flex-1">{project.description}</p>
+        </div>
+      </Card>
+    </div>
+  );
+
   const ComingSoonCard = () => (
-    <Card className="w-[300px] flex-shrink-0 overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 ease-in-out">
-      <div className="aspect-video relative bg-black">
+    <div className="group relative w-[300px]">
+      <Card className="overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 ease-in-out transform hover:scale-[1.02] hover:shadow-xl hover:z-10 h-[345px] flex flex-col">
+        <div className="relative h-[200px] bg-black">
         <Lottie
           animationData={cookingAnimation}
           className="w-full h-full"
@@ -348,9 +391,9 @@ function ProjectShowcase() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
       </div>
-      <div className="p-4">
+        <div className="p-4 flex-1 flex flex-col">
         <h4 className="font-semibold text-lg text-foreground">{comingSoonCard.title}</h4>
-        <p className="text-muted-foreground mt-2">{comingSoonCard.description}</p>
+          <p className="text-muted-foreground mt-2 flex-1">{comingSoonCard.description}</p>
         <div className="mt-4 flex items-center justify-center">
           <div className="animate-pulse flex space-x-2">
             <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -360,6 +403,7 @@ function ProjectShowcase() {
         </div>
       </div>
     </Card>
+    </div>
   );
 
   // Show loading indicator
@@ -384,14 +428,14 @@ function ProjectShowcase() {
   }
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-12 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-8 text-foreground">Project Showcase</h2>
+        <h2 className="text-4xl font-bold text-center mb-6 text-foreground">Project Showcase</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {/* Web Designs Container */}
-          <div className="bg-card rounded-lg shadow-lg p-6 border border-border">
-            <div className="flex items-center justify-between mb-6">
+          <div className="bg-card rounded-lg shadow-lg border border-border overflow-hidden">
+            <div className="flex items-center justify-between p-5">
               <h3 className="text-2xl font-semibold text-foreground">Web Designs</h3>
               <div className="flex gap-2">
                 <button 
@@ -408,33 +452,21 @@ function ProjectShowcase() {
                 </button>
               </div>
             </div>
-            <div className="overflow-hidden w-[300px]" ref={webDesignRef}>
-              <div className="flex space-x-6 transition-all duration-700 ease-in-out" style={{ minWidth: 'max-content' }}>
+            <div className="relative">
+              <div className="overflow-x-auto hide-scrollbar" ref={webDesignRef}>
+                <div className="flex gap-6 p-5 transition-all duration-700 ease-in-out" style={{ width: 'max-content' }}>
                 {webDesignProjects.map((project, index) => (
-                  <Card key={index} className="w-[300px] flex-shrink-0 overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 ease-in-out transform hover:scale-[1.02] hover:shadow-lg">
-                    <div className="aspect-video relative">
-                      <img
-                        src={project.imageUrl}
-                        alt={project.title}
-                        className="object-cover w-full h-full transition-all duration-500 ease-in-out hover:scale-105"
-                        loading="eager"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-all duration-500 ease-in-out" />
-                    </div>
-                    <div className="p-4">
-                      <h4 className="font-semibold text-lg text-foreground">{project.title}</h4>
-                      <p className="text-muted-foreground mt-2">{project.description}</p>
-                    </div>
-                  </Card>
+                    <ProjectCardComponent key={index} project={project} index={index} />
                 ))}
                 <ComingSoonCard />
+                </div>
               </div>
             </div>
           </div>
 
           {/* App Designs Container */}
-          <div className="bg-card rounded-lg shadow-lg p-6 border border-border">
-            <div className="flex items-center justify-between mb-6">
+          <div className="bg-card rounded-lg shadow-lg border border-border overflow-hidden">
+            <div className="flex items-center justify-between p-5">
               <h3 className="text-2xl font-semibold text-foreground">App Designs</h3>
               <div className="flex gap-2">
                 <button 
@@ -451,33 +483,21 @@ function ProjectShowcase() {
                 </button>
               </div>
             </div>
-            <div className="overflow-hidden w-[300px]" ref={appDesignRef}>
-              <div className="flex space-x-6 transition-all duration-700 ease-in-out" style={{ minWidth: 'max-content' }}>
+            <div className="relative">
+              <div className="overflow-x-auto hide-scrollbar" ref={appDesignRef}>
+                <div className="flex gap-6 p-5 transition-all duration-700 ease-in-out" style={{ width: 'max-content' }}>
                 {appDesignProjects.map((project, index) => (
-                  <Card key={index} className="w-[300px] flex-shrink-0 overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 ease-in-out transform hover:scale-[1.02] hover:shadow-lg">
-                    <div className="aspect-video relative">
-                      <img
-                        src={project.imageUrl}
-                        alt={project.title}
-                        className="object-cover w-full h-full transition-all duration-500 ease-in-out hover:scale-105"
-                        loading="eager"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-all duration-500 ease-in-out" />
-                    </div>
-                    <div className="p-4">
-                      <h4 className="font-semibold text-lg text-foreground">{project.title}</h4>
-                      <p className="text-muted-foreground mt-2">{project.description}</p>
-                    </div>
-                  </Card>
+                    <ProjectCardComponent key={index} project={project} index={index} />
                 ))}
                 <ComingSoonCard />
+                </div>
               </div>
             </div>
           </div>
 
           {/* UI/UX Designs Container */}
-          <div className="bg-card rounded-lg shadow-lg p-6 border border-border">
-            <div className="flex items-center justify-between mb-6">
+          <div className="bg-card rounded-lg shadow-lg border border-border overflow-hidden">
+            <div className="flex items-center justify-between p-5">
               <h3 className="text-2xl font-semibold text-foreground">UI/UX Designs</h3>
               <div className="flex gap-2">
                 <button 
@@ -494,26 +514,14 @@ function ProjectShowcase() {
                 </button>
               </div>
             </div>
-            <div className="overflow-hidden w-[300px]" ref={uiuxRef}>
-              <div className="flex space-x-6 transition-all duration-700 ease-in-out" style={{ minWidth: 'max-content' }}>
+            <div className="relative">
+              <div className="overflow-x-auto hide-scrollbar" ref={uiuxRef}>
+                <div className="flex gap-6 p-5 transition-all duration-700 ease-in-out" style={{ width: 'max-content' }}>
                 {uiuxProjects.map((project, index) => (
-                  <Card key={index} className="w-[300px] flex-shrink-0 overflow-hidden bg-card border-border hover:border-primary/50 transition-all duration-500 ease-in-out transform hover:scale-[1.02] hover:shadow-lg">
-                    <div className="aspect-video relative">
-                      <img
-                        src={project.imageUrl}
-                        alt={project.title}
-                        className="object-cover w-full h-full transition-all duration-500 ease-in-out hover:scale-105"
-                        loading="eager"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-all duration-500 ease-in-out" />
-                    </div>
-                    <div className="p-4">
-                      <h4 className="font-semibold text-lg text-foreground">{project.title}</h4>
-                      <p className="text-muted-foreground mt-2">{project.description}</p>
-                    </div>
-                  </Card>
+                    <ProjectCardComponent key={index} project={project} index={index} />
                 ))}
                 <ComingSoonCard />
+                </div>
               </div>
             </div>
           </div>
@@ -521,4 +529,23 @@ function ProjectShowcase() {
       </div>
     </section>
   );
+}
+
+// Add this CSS at the top of your file or in your global CSS
+const styles = `
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+`;
+
+// Add the styles to the document
+if (typeof document !== 'undefined') {
+  const styleSheet = document.createElement('style');
+  styleSheet.textContent = styles;
+  document.head.appendChild(styleSheet);
 } 

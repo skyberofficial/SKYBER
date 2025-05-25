@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { ArrowRight, Shield, Lock, Zap } from "lucide-react";
+import { Shield, Lock, Zap } from "lucide-react";
 import { TypeWriter } from "@/components/ui/TypeWriter";
 import { AnimatedMesh } from "@/components/ui/animated-mesh";
+import { AnimatedButton } from "@/components/ui/animated-button";
 
 export function Hero() {
   const phrases = [
@@ -47,13 +47,17 @@ export function Hero() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-              <Button size="lg" className="bg-[#17D492] hover:bg-[#14c082] text-white w-full sm:w-auto">
+              <AnimatedButton size="lg" className="w-full sm:w-auto" showArrow>
                 Get Started
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                Schedule Demo
-              </Button>
+              </AnimatedButton>
+              <AnimatedButton
+                href="/about"
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto"
+              >
+                About Us
+              </AnimatedButton>
             </div>
 
             <div className="grid grid-cols-3 gap-3 pt-2 md:pt-4">
