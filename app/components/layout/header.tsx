@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { ModeToggle } from '@/components/theme/mode-toggle';
+import { ModeToggle } from '../theme/mode-toggle';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 

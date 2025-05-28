@@ -13,8 +13,8 @@ export function MeshGradient() {
         const VANTA = (await import('vanta/dist/vanta.net.min')).default;
         setVantaEffect(
           VANTA({
-            el: vantaRef.current,
-            THREE: THREE,
+            el: vantaRef.current as HTMLElement,
+            THREE,
             mouseControls: true,
             touchControls: true,
             gyroControls: false,
@@ -22,11 +22,11 @@ export function MeshGradient() {
             minWidth: 200.00,
             scale: 1.00,
             scaleMobile: 1.00,
-            color: 0x17D492,
-            backgroundColor: 0x111111,
-            points: 15.00,
+            color: 0x0,
+            backgroundColor: 0x0,
+            points: 20.00,
             maxDistance: 25.00,
-            spacing: 17.00,
+            spacing: 20.00,
             showDots: false
           })
         );
@@ -40,10 +40,5 @@ export function MeshGradient() {
     };
   }, [vantaEffect]);
 
-  return (
-    <>
-      <div ref={vantaRef} className="fixed inset-0 z-0" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-background z-10" />
-    </>
-  );
+  return <div ref={vantaRef} className="absolute inset-0 -z-10" />;
 } 

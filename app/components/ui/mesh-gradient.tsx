@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+// @ts-ignore
 import NET from 'vanta/dist/vanta.net.min';
 import * as THREE from 'three';
 
@@ -22,23 +23,23 @@ export function MeshGradient() {
       }
     };
 
-    if (!vantaEffect) {
+    if (!vantaEffect && vantaRef.current) {
       setVantaEffect(
         NET({
-          el: vantaRef.current,
+          el: vantaRef.current as HTMLElement,
           THREE,
           mouseControls: true,
           touchControls: true,
           gyroControls: false,
           minHeight: 200.00,
           minWidth: 200.00,
-          scale: 1.0,
-          scaleMobile: 1.0,
-          color: 0x17D492,
-          backgroundColor: 0x000000,
-          points: 10,
-          maxDistance: 20.00,
-          spacing: 18.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          color: 0x0,
+          backgroundColor: 0x0,
+          points: 20.00,
+          maxDistance: 25.00,
+          spacing: 20.00,
           showDots: false,
           mouseEase: true,
           mouseFalloff: 0.8,
@@ -76,5 +77,5 @@ export function MeshGradient() {
     };
   }, [vantaEffect]);
 
-  return <div ref={vantaRef} className="absolute inset-0" />;
+  return <div ref={vantaRef} className="absolute inset-0 -z-10" />;
 } 
