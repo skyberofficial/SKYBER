@@ -6,6 +6,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Preloader } from '@/components/preloader';
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import { PageSecurity } from '@/components/security/page-security';
 import ClientLayout from './client-layout';
 import { StagewiseDevTools } from '@/components/dev/stagewise-toolbar';
@@ -150,6 +151,7 @@ export default function RootLayout({
               <Footer />
             </div>
             <SpeedInsights />
+            <Analytics />
             <StagewiseDevTools />
           </ClientLayout>
         </ThemeProvider>

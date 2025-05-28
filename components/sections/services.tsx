@@ -23,35 +23,40 @@ const services = [
     icon: Shield,
     title: "Cybersecurity Solutions",
     description: "Comprehensive protection against threats with advanced vulnerability assessment and monitoring.",
-    features: ["Threat Protection", "Vulnerability Assessment", "Security Monitoring", "Incident Response"]
+    features: ["Threat Protection", "Vulnerability Assessment", "Security Monitoring", "Incident Response"],
+    link: "#cybersecurity-details"
   },
   {
     id: "web-development",
     icon: Code,
     title: "Web Development",
     description: "Full-stack web development services to create responsive, scalable, and modern websites.",
-    features: ["Responsive Design", "Front-end Development", "Back-end APIs", "E-commerce Solutions"]
+    features: ["Responsive Design", "Front-end Development", "Back-end APIs", "E-commerce Solutions"],
+    link: "#web-development-details"
   },
   {
     id: "ui-ux",
     icon: Palette,
     title: "UI/UX Design",
     description: "Creating intuitive and engaging user experiences with modern design principles.",
-    features: ["User Research", "Wireframing", "Prototyping", "Visual Design"]
+    features: ["User Research", "Wireframing", "Prototyping", "Visual Design"],
+    link: "/services"
   },
   {
     id: "app-development",
     icon: Smartphone,
     title: "App Development",
     description: "Native and cross-platform mobile applications for iOS and Android platforms.",
-    features: ["iOS Development", "Android Development", "Cross-platform Apps", "App Maintenance"]
+    features: ["iOS Development", "Android Development", "Cross-platform Apps", "App Maintenance"],
+    link: "#app-development-details"
   },
   {
     id: "tech-consultancy",
     icon: Users,
     title: "Tech Consultancy",
     description: "Expert guidance on technology strategy, architecture, and implementation.",
-    features: ["Technology Assessment", "Digital Strategy", "Architecture Planning", "Team Training"]
+    features: ["Technology Assessment", "Digital Strategy", "Architecture Planning", "Team Training"],
+    link: "#tech-consultancy-details"
   }
 ];
 
@@ -108,8 +113,13 @@ export function Services() {
                   </li>
                 ))}
               </ul>
-              <Link href={`#${service.id}-details`} className="inline-flex items-center text-[#17D492] hover:text-[#14c082] transition-colors">
-                Learn more <ArrowRight className="ml-1 w-4 h-4" />
+              <Link href={service.link}>
+                <Button 
+                  variant="ghost" 
+                  className="text-[#17D492] hover:text-[#14c082] hover:bg-[#17D492]/10"
+                >
+                  Learn more <ArrowRight className="ml-1 w-4 h-4" />
+                </Button>
               </Link>
             </motion.div>
           ))}
