@@ -18,7 +18,7 @@ export function AnimatedMesh() {
           }
         }}
         style={{
-          height: "1000%",
+          height: "120%",
           width: "100%",
         }}
       />
@@ -37,7 +37,7 @@ export function AnimatedMesh() {
           }
         }}
         style={{
-          height: "1000%",
+          height: "120%",
           width: "100%",
         }}
       />

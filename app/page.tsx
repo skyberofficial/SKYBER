@@ -7,13 +7,15 @@ import { Contact } from "@/components/sections/contact";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <About />
-      <ProjectShowcaseWrapper />
-      <Services />
-      <Testimonials />
-      <Contact />
+    <main data-barba="wrapper">
+      <div data-barba="container" data-barba-namespace="home">
+        <Hero />
+        <About />
+        <ProjectShowcaseWrapper />
+        <Services />
+        <Testimonials />
+        <Contact />
+      </div>
     </main>
   );
 }

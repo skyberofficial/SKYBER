@@ -33,11 +33,18 @@ const Header = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
     e.preventDefault();
     
+    // Get Lenis instance from window
+    const lenis = (window as any).lenis;
+    
     // Special handling for insights page
     if (section === "#insights") {
       if (isInsightsPage) {
-        // If already on insights page, scroll to top
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        // If already on insights page, scroll to top with Lenis
+        if (lenis) {
+          lenis.scrollTo(0, { duration: 1.2 });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
       } else {
         // Navigate to insights page
         router.push("/insights");
@@ -48,9 +55,11 @@ const Header = () => {
     // Special handling for about page
     if (section === "#about") {
       if (isHomePage) {
-        // If on home page, smooth scroll to about section
+        // If on home page, smooth scroll to about section with Lenis
         const element = document.querySelector(section);
-        if (element) {
+        if (element && lenis) {
+          lenis.scrollTo(element, { duration: 1.2, offset: -80 });
+        } else if (element) {
           element.scrollIntoView({ behavior: "smooth" });
         }
       } else {
@@ -63,8 +72,12 @@ const Header = () => {
     // Special handling for portfolio page
     if (section === "#portfolio") {
       if (isPortfolioPage) {
-        // If already on portfolio page, scroll to top
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        // If already on portfolio page, scroll to top with Lenis
+        if (lenis) {
+          lenis.scrollTo(0, { duration: 1.2 });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
       } else {
         // Navigate to portfolio page
         router.push("/portfolio");
@@ -79,9 +92,11 @@ const Header = () => {
     }
 
     if (isHomePage) {
-      // If on home page, smooth scroll to section
+      // If on home page, smooth scroll to section with Lenis
       const element = document.querySelector(section);
-      if (element) {
+      if (element && lenis) {
+        lenis.scrollTo(element, { duration: 1.2, offset: -80 });
+      } else if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
     } else {

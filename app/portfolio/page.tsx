@@ -185,269 +185,271 @@ export default function PortfolioPage() {
   );
 
   return (
-    <main className="min-h-screen bg-dot-pattern">
-      {/* Hero Section */}
-      <section className="relative min-h-[calc(100vh-5rem)] mt-20 flex items-center justify-center overflow-hidden">
-        {/* Background Image Layer */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/portfolio-bg.jpg"
-            alt="Portfolio Background"
-            fill
-            className="object-cover scale-110 blur-[2px]"
-            priority
-            quality={100}
-          />
-          {/* Frosty Glass Effect Layers */}
-          <div className="absolute inset-0 frost-blur bg-background/30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background/80 animate-gradient" />
+    <main data-barba="wrapper" className="min-h-screen bg-dot-pattern">
+      <div data-barba="container" data-barba-namespace="portfolio">
+        {/* Hero Section */}
+        <section className="relative min-h-[calc(100vh-5rem)] mt-20 flex items-center justify-center overflow-hidden">
+          {/* Background Image Layer */}
+          <div className="absolute inset-0">
+            <Image
+              src="/images/portfolio-bg.jpg"
+              alt="Portfolio Background"
+              fill
+              className="object-cover scale-110 blur-[2px]"
+              priority
+              quality={100}
+            />
+            {/* Frosty Glass Effect Layers */}
+            <div className="absolute inset-0 frost-blur bg-background/30" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background/80 animate-gradient" />
+            
+            {/* Animated Grid Layers */}
+            <div className="absolute inset-0 animate-grid" />
+            <div className="absolute inset-0 animate-grid-reverse" style={{ animationDuration: '4s' }} />
+            
+            {/* Additional Grid Layer for Depth */}
+            <div className="absolute inset-0 animate-grid" style={{ 
+              animationDuration: '6s',
+              backgroundSize: '48px 48px',
+              opacity: 0.3
+            }} />
+          </div>
           
-          {/* Animated Grid Layers */}
-          <div className="absolute inset-0 animate-grid" />
-          <div className="absolute inset-0 animate-grid-reverse" style={{ animationDuration: '4s' }} />
-          
-          {/* Additional Grid Layer for Depth */}
-          <div className="absolute inset-0 animate-grid" style={{ 
-            animationDuration: '6s',
-            backgroundSize: '48px 48px',
-            opacity: 0.3
-          }} />
-        </div>
-        
-        <div className="container relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center space-y-8"
-          >
-            {/* Glass Card Effect for Content */}
-            <div className="glass-morphism p-8 rounded-2xl glow">
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-                Transforming Ideas into
-                <span className="text-[#17D492] glow-text block mt-2">Digital Excellence</span>
-              </h1>
-              <p className="text-xl text-white/90 max-w-2xl mx-auto mt-6">
-                Explore our portfolio of innovative solutions that help businesses thrive in the digital age
-              </p>
-              <div className="flex items-center justify-center gap-4 mt-8">
-                <AnimatedButton
-                  href="#projects"
-                  className="bg-[#17D492] hover:bg-[#14c082] text-white px-8 shadow-lg shadow-[#17D492]/20"
-                  showArrow
-                >
-                  View Projects
-                </AnimatedButton>
-                <AnimatedButton
-                  href="/contact"
-                  variant="outline"
-                  className="px-8 bg-white/10 hover:bg-white/20 border-white/20 text-white backdrop-blur-sm"
-                >
-                  Get in Touch
-                </AnimatedButton>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Enhanced Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-sm text-white/70 glass-morphism px-4 py-1 rounded-full">
-              Scroll to explore
-            </span>
+          <div className="container relative z-10">
             <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-1 h-8 rounded-full bg-[#17D492]/20 backdrop-blur-sm"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="max-w-4xl mx-auto text-center space-y-8"
             >
-              <motion.div
-                animate={{ height: ["0%", "100%", "0%"] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="w-full rounded-full bg-[#17D492] glow"
-              />
+              {/* Glass Card Effect for Content */}
+              <div className="glass-morphism p-8 rounded-2xl glow">
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
+                  Transforming Ideas into
+                  <span className="text-[#17D492] glow-text block mt-2">Digital Excellence</span>
+                </h1>
+                <p className="text-xl text-white/90 max-w-2xl mx-auto mt-6">
+                  Explore our portfolio of innovative solutions that help businesses thrive in the digital age
+                </p>
+                <div className="flex items-center justify-center gap-4 mt-8">
+                  <AnimatedButton
+                    href="#projects"
+                    className="bg-[#17D492] hover:bg-[#14c082] text-white px-8 shadow-lg shadow-[#17D492]/20"
+                    showArrow
+                  >
+                    View Projects
+                  </AnimatedButton>
+                  <AnimatedButton
+                    href="/contact"
+                    variant="outline"
+                    className="px-8 bg-white/10 hover:bg-white/20 border-white/20 text-white backdrop-blur-sm"
+                  >
+                    Get in Touch
+                  </AnimatedButton>
+                </div>
+              </div>
             </motion.div>
           </div>
-        </motion.div>
 
-        {/* Animated Glow Effects */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#17D492]/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#17D492]/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        </div>
-      </section>
-
-      {/* Partner Companies Section */}
-      <section className="py-20 bg-secondary/30">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Trusted by Industry Leaders</h2>
-            <p className="text-muted-foreground">We collaborate with forward-thinking companies worldwide</p>
-          </div>
-
-          <div className="relative">
-            <div className="overflow-hidden w-full">
+          {/* Enhanced Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          >
+            <div className="flex flex-col items-center gap-2">
+              <span className="text-sm text-white/70 glass-morphism px-4 py-1 rounded-full">
+                Scroll to explore
+              </span>
               <motion.div
-                ref={carouselRef}
-                animate={controls}
-                className="flex gap-8 w-fit"
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="w-1 h-8 rounded-full bg-[#17D492]/20 backdrop-blur-sm"
               >
-                {duplicatedPartners.map((partner, index) => (
-                  <div
-                    key={index}
-                    className="flex-shrink-0 w-[200px]"
-                  >
-                    <div className="h-24 bg-background rounded-lg shadow-sm border flex items-center justify-center p-6 hover:border-[#17D492]/50 transition-all duration-300 hover:shadow-lg">
-                      <Image
-                        src={partner.logo}
-                        alt={`${partner.name} logo`}
-                        width={120}
-                        height={40}
-                        className={cn(
-                          "w-auto h-8 grayscale hover:grayscale-0 transition-all duration-300",
-                          partner.invertInDark ? "dark:invert" : ""
-                        )}
-                      />
-                    </div>
-                  </div>
-                ))}
+                <motion.div
+                  animate={{ height: ["0%", "100%", "0%"] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="w-full rounded-full bg-[#17D492] glow"
+                />
               </motion.div>
             </div>
+          </motion.div>
+
+          {/* Animated Glow Effects */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#17D492]/20 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#17D492]/10 rounded-full blur-3xl animate-pulse delay-1000" />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Filter Section */}
-      <section className="py-20" id="projects">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Projects</h2>
-            <p className="text-muted-foreground">Discover our latest work across different industries</p>
-          </div>
+        {/* Partner Companies Section */}
+        <section className="py-20 bg-secondary/30">
+          <div className="container">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Trusted by Industry Leaders</h2>
+              <p className="text-muted-foreground">We collaborate with forward-thinking companies worldwide</p>
+            </div>
 
-          <div className="flex flex-wrap justify-center gap-3 mb-6">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={cn(
-                  "px-4 py-2 rounded-full text-sm transition-colors",
-                  selectedCategory === category
-                    ? "bg-[#17D492] text-white"
-                    : "bg-secondary/50 hover:bg-secondary text-foreground"
-                )}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio Grid */}
-      <section ref={ref} className="pb-20 -mt-10">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredItems.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
-                <Card className="group h-full hover:border-[#17D492]/50 transition-colors duration-300">
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-t-lg">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-
-                  <div className="p-6 space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2 text-[#17D492]">
-                        {item.icon}
-                        <span className="text-sm font-medium">{item.category}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <StarRating rating={item.rating} />
-                        <span className="text-sm text-muted-foreground">({item.reviews})</span>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground line-clamp-2">
-                        {item.description}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      {item.tags.map((tag) => (
-                        <Badge
-                          key={tag}
-                          variant="secondary"
-                          className="bg-secondary/50 text-foreground text-xs"
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-
-                    <AnimatedButton
-                      href={item.link}
-                      variant="ghost"
-                      className="w-full group/btn"
-                    >
-                      <span className="text-[#17D492] group-hover/btn:text-[#14c082] transition-colors">
-                        View Project
-                      </span>
-                      <ArrowRight className="w-4 h-4 text-[#17D492] group-hover/btn:text-[#14c082] transition-colors" />
-                    </AnimatedButton>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-secondary/30">
-        <div className="container">
-          <Card className="overflow-hidden">
-            <div className="relative p-8 md:p-12">
-              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-                <div className="text-center md:text-left space-y-4 max-w-2xl">
-                  <h2 className="text-3xl font-bold">
-                    Ready to Start Your Project?
-                  </h2>
-                  <p className="text-muted-foreground">
-                    Let's work together to bring your vision to life with cutting-edge technology and design.
-                  </p>
-                </div>
-                <AnimatedButton
-                  href="/contact"
-                  className="bg-[#17D492] hover:bg-[#14c082] text-white min-w-[200px]"
-                  showArrow
+            <div className="relative">
+              <div className="overflow-hidden w-full">
+                <motion.div
+                  ref={carouselRef}
+                  animate={controls}
+                  className="flex gap-8 w-fit"
                 >
-                  Get in Touch
-                </AnimatedButton>
+                  {duplicatedPartners.map((partner, index) => (
+                    <div
+                      key={index}
+                      className="flex-shrink-0 w-[200px]"
+                    >
+                      <div className="h-24 bg-background rounded-lg shadow-sm border flex items-center justify-center p-6 hover:border-[#17D492]/50 transition-all duration-300 hover:shadow-lg">
+                        <Image
+                          src={partner.logo}
+                          alt={`${partner.name} logo`}
+                          width={120}
+                          height={40}
+                          className={cn(
+                            "w-auto h-8 grayscale hover:grayscale-0 transition-all duration-300",
+                            partner.invertInDark ? "dark:invert" : ""
+                          )}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </motion.div>
               </div>
-
-              <div className="absolute inset-0 bg-dot-pattern opacity-5" />
             </div>
-          </Card>
-        </div>
-      </section>
+          </div>
+        </section>
+
+        {/* Filter Section */}
+        <section className="py-20" id="projects">
+          <div className="container">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Our Projects</h2>
+              <p className="text-muted-foreground">Discover our latest work across different industries</p>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-3 mb-6">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={cn(
+                    "px-4 py-2 rounded-full text-sm transition-colors",
+                    selectedCategory === category
+                      ? "bg-[#17D492] text-white"
+                      : "bg-secondary/50 hover:bg-secondary text-foreground"
+                  )}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Portfolio Grid */}
+        <section ref={ref} className="pb-20 -mt-10">
+          <div className="container">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredItems.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                >
+                  <Card className="group h-full hover:border-[#17D492]/50 transition-colors duration-300">
+                    <div className="relative aspect-[16/10] overflow-hidden rounded-t-lg">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+
+                    <div className="p-6 space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2 text-[#17D492]">
+                          {item.icon}
+                          <span className="text-sm font-medium">{item.category}</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <StarRating rating={item.rating} />
+                          <span className="text-sm text-muted-foreground">({item.reviews})</span>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                        <p className="text-sm text-muted-foreground line-clamp-2">
+                          {item.description}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {item.tags.map((tag) => (
+                          <Badge
+                            key={tag}
+                            variant="secondary"
+                            className="bg-secondary/50 text-foreground text-xs"
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+
+                      <AnimatedButton
+                        href={item.link}
+                        variant="ghost"
+                        className="w-full group/btn"
+                      >
+                        <span className="text-[#17D492] group-hover/btn:text-[#14c082] transition-colors">
+                          View Project
+                        </span>
+                        <ArrowRight className="w-4 h-4 text-[#17D492] group-hover/btn:text-[#14c082] transition-colors" />
+                      </AnimatedButton>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-secondary/30">
+          <div className="container">
+            <Card className="overflow-hidden">
+              <div className="relative p-8 md:p-12">
+                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                  <div className="text-center md:text-left space-y-4 max-w-2xl">
+                    <h2 className="text-3xl font-bold">
+                      Ready to Start Your Project?
+                    </h2>
+                    <p className="text-muted-foreground">
+                      Let's work together to bring your vision to life with cutting-edge technology and design.
+                    </p>
+                  </div>
+                  <AnimatedButton
+                    href="/contact"
+                    className="bg-[#17D492] hover:bg-[#14c082] text-white min-w-[200px]"
+                    showArrow
+                  >
+                    Get in Touch
+                  </AnimatedButton>
+                </div>
+
+                <div className="absolute inset-0 bg-dot-pattern opacity-5" />
+              </div>
+            </Card>
+          </div>
+        </section>
+      </div>
     </main>
   );
 } 

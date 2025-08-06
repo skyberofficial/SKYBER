@@ -10,6 +10,11 @@ import { Analytics } from "@vercel/analytics/next";
 import { PageSecurity } from '@/components/security/page-security';
 import ClientLayout from './client-layout';
 import { StagewiseDevTools } from '@/components/dev/stagewise-toolbar';
+import { PerformanceDashboard } from '@/components/dev/performance-dashboard';
+import { WDYRProvider } from '@/components/dev/wdyr-provider';
+import { LenisProvider } from '@/components/smooth-scroll/lenis-provider';
+import { BarbaProvider } from '@/components/smooth-scroll/barba-provider';
+import { BackToTop } from '@/components/ui/back-to-top';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -142,18 +147,25 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`no-scrollbar ${orbitron.variable}`}>
       <body className={`${inter.className} no-scrollbar overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <ClientLayout>
-            <PageSecurity />
-            <Preloader />
-            <div className="flex min-h-screen flex-col no-scrollbar overflow-x-hidden">
-              <Header />
-              <main className="flex-grow no-scrollbar overflow-x-hidden">{children}</main>
-              <Footer />
-            </div>
-            <SpeedInsights />
-            <Analytics />
-            <StagewiseDevTools />
-          </ClientLayout>
+          <LenisProvider>
+            <BarbaProvider>
+              <ClientLayout>
+                <WDYRProvider />
+                <PageSecurity />
+                <Preloader />
+                <div className="flex min-h-screen flex-col no-scrollbar overflow-x-hidden">
+                  <Header />
+                  <main className="flex-grow no-scrollbar overflow-x-hidden">{children}</main>
+                  <Footer />
+                </div>
+                <BackToTop />
+                <SpeedInsights />
+                <Analytics />
+                <StagewiseDevTools />
+                <PerformanceDashboard />
+              </ClientLayout>
+            </BarbaProvider>
+          </LenisProvider>
         </ThemeProvider>
       </body>
     </html>
