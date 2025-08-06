@@ -32,10 +32,8 @@ export function MeshGradient() {
       if (!vantaEffect && vantaRef.current) {
         try {
           // Dynamic imports to avoid build-time errors
-          const [NET, THREE] = await Promise.all([
-            import('vanta/dist/vanta.net.min').then(mod => mod.default),
-            import('three').then(mod => mod)
-          ]);
+          const NET = await import('vanta/dist/vanta.net.min').then((mod: any) => mod.default);
+          const THREE = await import('three').then((mod: any) => mod);
 
           const effect = NET({
             el: vantaRef.current as HTMLElement,
