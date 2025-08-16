@@ -20,6 +20,7 @@ export function MapLibreComponent() {
       container: mapContainer.current,
       style: {
         version: 8,
+        glyphs: 'https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=Slx857nSZ7JmUiCsJzsj',
         sources: {
           satellite: {
             type: 'raster',

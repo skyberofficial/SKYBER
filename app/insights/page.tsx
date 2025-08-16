@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Lottie from "lottie-react";
 import CountUp from "react-countup";
-import Image from "next/image";
 import {
   LineChart,
   Line,
@@ -40,10 +39,6 @@ import {
   Clock,
   RefreshCw,
   ArrowRight,
-  Calendar,
-  MessageCircle,
-  Eye,
-  BookOpen,
 } from "lucide-react";
 import { AnimatedButton } from "@/components/ui/animated-button";
 import { Spinner } from "@/components/ui/spinner";
@@ -114,105 +109,11 @@ const reviews = [
   },
 ];
 
-// Blog data
-const blogPosts = [
-  {
-    id: 1,
-    title: "The Future of Cybersecurity: AI-Powered Threat Detection",
-    excerpt: "Discover how artificial intelligence is revolutionizing cybersecurity threat detection and response mechanisms.",
-    image: "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg",
-    category: "Cybersecurity",
-    author: {
-      name: "Alex Thompson",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
-    },
-    date: "2024-03-15",
-    readTime: "5 min read",
-    comments: 12,
-    views: 1543,
-  },
-  {
-    id: 2,
-    title: "Building Scalable Cloud Infrastructure",
-    excerpt: "Learn the best practices for designing and implementing scalable cloud infrastructure solutions.",
-    image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg",
-    category: "Cloud Computing",
-    author: {
-      name: "Sarah Chen",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
-    },
-    date: "2024-03-14",
-    readTime: "7 min read",
-    comments: 8,
-    views: 982,
-  },
-  {
-    id: 3,
-    title: "DevOps Automation: Streamlining Workflows",
-    excerpt: "Explore how DevOps automation can improve your development pipeline and increase productivity.",
-    image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
-    category: "DevOps",
-    author: {
-      name: "Mike Roberts",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mike",
-    },
-    date: "2024-03-13",
-    readTime: "6 min read",
-    comments: 15,
-    views: 2341,
-  },
-  {
-    id: 4,
-    title: "Data Privacy in the Digital Age",
-    excerpt: "Understanding the importance of data privacy and implementing effective protection measures.",
-    image: "https://images.pexels.com/photos/5380591/pexels-photo-5380591.jpeg",
-    category: "Privacy",
-    author: {
-      name: "Emily Parker",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Emily",
-    },
-    date: "2024-03-12",
-    readTime: "4 min read",
-    comments: 6,
-    views: 876,
-  },
-  {
-    id: 5,
-    title: "The Rise of Edge Computing",
-    excerpt: "How edge computing is transforming data processing and improving application performance.",
-    image: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg",
-    category: "Technology",
-    author: {
-      name: "David Kim",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=David",
-    },
-    date: "2024-03-11",
-    readTime: "8 min read",
-    comments: 19,
-    views: 1876,
-  },
-  {
-    id: 6,
-    title: "Securing Microservices Architecture",
-    excerpt: "Best practices for implementing security in microservices-based applications.",
-    image: "https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg",
-    category: "Architecture",
-    author: {
-      name: "Rachel Adams",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rachel",
-    },
-    date: "2024-03-10",
-    readTime: "6 min read",
-    comments: 10,
-    views: 1234,
-  },
-];
 
 const CARD_REVEAL_DELAY = 200; // ms between each card reveal
 
 const InsightsPage = () => {
   const [headerRef, headerInView] = useInView({ threshold: 0.1, triggerOnce: true });
-  const [blogsRef, blogsInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [statsRef, statsInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [chartsRef, chartsInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [reviewsRef, reviewsInView] = useInView({ threshold: 0.1, triggerOnce: true });
@@ -324,7 +225,7 @@ const InsightsPage = () => {
     <main data-barba="wrapper" className="min-h-screen bg-dot-pattern">
       <div data-barba="container" data-barba-namespace="insights">
         {/* Animated Hero Section */}
-        <section className="relative min-h-[70vh] md:min-h-[80vh] pt-16 md:pt-24 pb-8 overflow-hidden bg-gradient-to-b from-background via-background/80 to-transparent">
+        <section className="relative min-h-[70vh] md:min-h-[80vh] pt-20 md:pt-24 pb-8 overflow-hidden bg-gradient-to-b from-background via-background/80 to-transparent">
           {/* Animated background shapes */}
           <div className="absolute inset-0 pointer-events-none z-0">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#17D492]/10 rounded-full blur-3xl animate-pulse" />
@@ -349,19 +250,12 @@ const InsightsPage = () => {
                      <span className="text-[#D2D2D3]">& Analytics</span>
                    </h1>
                   <p className="text-lg md:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0">
-                    Explore the latest trends, expert blogs, and real-time analytics in cybersecurity, cloud, and tech innovation.
+                    Explore the latest trends and real-time analytics in cybersecurity, cloud, and tech innovation.
                   </p>
                 </div>
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <AnimatedButton 
-                    href="#blogs" 
-                    className="bg-[#17D492] hover:bg-[#14c082] text-white px-8 py-3 text-lg font-semibold shadow-lg shadow-[#17D492]/20" 
-                    showArrow
-                  >
-                    Explore Blogs
-                  </AnimatedButton>
                   <AnimatedButton 
                     href="#system-insights" 
                     variant="outline"
@@ -414,96 +308,7 @@ const InsightsPage = () => {
           </div>
         </section>
 
-        {/* Blog Posts Section */}
-        <section
-          id="blogs"
-          ref={blogsRef}
-          className="container mx-auto px-4 py-12"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blogPosts.map((post, index) => (
-              <motion.div
-                key={post.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={blogsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <Card className="group overflow-hidden h-full hover:border-[#17D492]/50 transition-colors duration-300">
-                  <div className="relative aspect-[16/9] overflow-hidden">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                  <CardContent className="p-6">
-                    <Badge variant="outline" className="bg-[#17D492]/10 text-[#17D492] mb-4">
-                      {post.category}
-                    </Badge>
-                    <h3 className="text-xl font-semibold mb-2 line-clamp-2 group-hover:text-[#17D492] transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-4 line-clamp-2">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2">
-                        <img
-                          src={post.author.avatar}
-                          alt={post.author.name}
-                          className="w-8 h-8 rounded-full"
-                        />
-                        <div>
-                          <p className="text-sm font-medium">{post.author.name}</p>
-                          <div className="flex items-center text-xs text-muted-foreground">
-                            <Calendar className="w-3 h-3 mr-1" />
-                            {new Date(post.date).toLocaleDateString('en-US', {
-                              month: 'short',
-                              day: 'numeric',
-                              year: 'numeric'
-                            })}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-4 text-muted-foreground">
-                        <div className="flex items-center text-xs">
-                          <BookOpen className="w-3 h-3 mr-1" />
-                          {post.readTime}
-                        </div>
-                        <div className="flex items-center text-xs">
-                          <MessageCircle className="w-3 h-3 mr-1" />
-                          {post.comments}
-                        </div>
-                        <div className="flex items-center text-xs">
-                          <Eye className="w-3 h-3 mr-1" />
-                          {post.views}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                  <CardFooter className="pt-0 pb-6 px-6">
-                    <AnimatedButton
-                      variant="ghost"
-                      className="w-full group/btn"
-                      showArrow
-                    >
-                      <span className="text-[#17D492] group-hover/btn:text-[#14c082] transition-colors">
-                        Read More
-                      </span>
-                    </AnimatedButton>
-                  </CardFooter>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <AnimatedButton variant="outline" showArrow>
-              View All Articles
-            </AnimatedButton>
-          </div>
-        </section>
+        
 
         {/* System Insights Section */}
         <section

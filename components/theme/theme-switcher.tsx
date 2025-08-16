@@ -12,18 +12,12 @@ import {
 import { useEffect, useState } from "react";
 
 export function ThemeSwitcher() {
-  const { setTheme, theme, resolvedTheme } = useTheme();
+  const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  const handleThemeChange = (newTheme: string) => {
-    console.log("🔍 ThemeSwitcher - Changing theme to:", newTheme);
-    setTheme(newTheme);
-  };
 
   if (!mounted) {
     return (
@@ -44,25 +38,18 @@ export function ThemeSwitcher() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem 
-          onClick={() => handleThemeChange("light")}
-          className={theme === "light" ? "bg-accent" : ""}
-        >
+        <DropdownMenuItem onClick={() => setTheme("light")} className={theme === "light" ? "bg-accent" : ""}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem 
-          onClick={() => handleThemeChange("dark")}
-          className={theme === "dark" ? "bg-accent" : ""}
-        >
+        <DropdownMenuItem onClick={() => setTheme("dark")} className={theme === "dark" ? "bg-accent" : ""}>
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem 
-          onClick={() => handleThemeChange("system")}
-          className={theme === "system" ? "bg-accent" : ""}
-        >
+        <DropdownMenuItem onClick={() => setTheme("system")} className={theme === "system" ? "bg-accent" : ""}>
           System
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
 }
+
+

@@ -11,7 +11,6 @@ import { buttonVariants } from "@/components/ui/button";
 
 type ButtonVariant = NonNullable<VariantProps<typeof buttonVariants>["variant"]>;
 
-// Loading spinner component
 const LoadingSpinner = ({ variant }: { variant: ButtonVariant }) => (
   <svg
     className={cn(
@@ -38,7 +37,6 @@ const LoadingSpinner = ({ variant }: { variant: ButtonVariant }) => (
   </svg>
 );
 
-// Binary animation component
 const BinaryAnimation = ({ variant }: { variant: ButtonVariant }) => {
   return (
     <div className="flex space-x-1">
@@ -100,12 +98,10 @@ export function AnimatedButton({
         await onClick();
       }
 
-      // If href is provided, navigate after a brief delay
       if (href) {
         await new Promise(resolve => setTimeout(resolve, 1000));
         router.push(href);
       } else {
-        // If no href, just show loading for a moment
         await new Promise(resolve => setTimeout(resolve, 1000));
       }
     } finally {
@@ -159,4 +155,6 @@ export function AnimatedButton({
       />
     </Button>
   );
-} 
+}
+
+

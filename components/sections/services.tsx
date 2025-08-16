@@ -20,7 +20,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { PerformanceTracker } from "@/components/ui/performance-tracker";
 
 const services = [
   {
@@ -29,7 +28,7 @@ const services = [
     title: "Cybersecurity Solutions",
     description: "Comprehensive protection against threats with advanced vulnerability assessment and monitoring.",
     features: ["Threat Protection", "Vulnerability Assessment", "Security Monitoring", "Incident Response"],
-    link: "#cybersecurity-details"
+    link: "/services/cybersecurity"
   },
   {
     id: "web-development",
@@ -37,7 +36,7 @@ const services = [
     title: "Web Development",
     description: "Full-stack web development services to create responsive, scalable, and modern websites.",
     features: ["Responsive Design", "Front-end Development", "Back-end APIs", "E-commerce Solutions"],
-    link: "#web-development-details"
+    link: "/services/web-development"
   },
   {
     id: "ui-ux",
@@ -45,7 +44,7 @@ const services = [
     title: "UI/UX Design",
     description: "Creating intuitive and engaging user experiences with modern design principles.",
     features: ["User Research", "Wireframing", "Prototyping", "Visual Design"],
-    link: "/services"
+    link: "/services/ui/ux"
   },
   {
     id: "app-development",
@@ -53,7 +52,7 @@ const services = [
     title: "App Development",
     description: "Native and cross-platform mobile applications for iOS and Android platforms.",
     features: ["iOS Development", "Android Development", "Cross-platform Apps", "App Maintenance"],
-    link: "#app-development-details"
+    link: "/services/app-development"
   },
   {
     id: "tech-consultancy",
@@ -61,7 +60,7 @@ const services = [
     title: "Tech Consultancy",
     description: "Expert guidance on technology strategy, architecture, and implementation.",
     features: ["Technology Assessment", "Digital Strategy", "Architecture Planning", "Team Training"],
-    link: "#tech-consultancy-details"
+    link: "/services/tech-consultancy"
   },
   {
     id: "technical-support",
@@ -69,7 +68,7 @@ const services = [
     title: "Technical Support by TechVerra",
     description: "Professional technical support services for debugging, error resolution, and server maintenance.",
     features: ["24/7 Debugging Support", "Error Resolution", "Server Maintenance", "Performance Optimization"],
-    link: "/techverra-support"
+    link: "/services/collaborated-companies/techverra"
   }
 ];
 
@@ -128,19 +127,8 @@ const ServiceCard = React.memo<{
 
 ServiceCard.displayName = 'ServiceCard';
 
-// Add WDYR tracking to ServiceCard
-if (process.env.NODE_ENV === 'development' && process.env.WDYR === 'true') {
-  (ServiceCard as any).whyDidYouRender = {
-    customName: 'ServiceCard',
-    trackHooks: true,
-    trackProps: true,
-    logOnDifferentValues: true,
-  };
-}
-
 export const Services = React.memo(() => {
   return (
-    <PerformanceTracker componentName="Services">
     <section id="services" className="py-20 bg-background relative">
       <div className="container mx-auto">
         <div className="text-center mb-16">
@@ -163,18 +151,9 @@ export const Services = React.memo(() => {
         </motion.div>
       </div>
     </section>
-    </PerformanceTracker>
   );
 });
 
 Services.displayName = 'Services';
 
-// Add WDYR tracking to Services component
-if (process.env.NODE_ENV === 'development' && process.env.WDYR === 'true') {
-  (Services as any).whyDidYouRender = {
-    customName: 'Services',
-    trackHooks: true,
-    trackProps: false,
-    logOnDifferentValues: true,
-  };
-}
+

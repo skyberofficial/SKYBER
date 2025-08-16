@@ -20,18 +20,14 @@ export function TypeWriter({
   useEffect(() => {
     const timeout = setTimeout(() => {
       const currentPhrase = phrases[currentPhraseIndex];
-      
       if (!isDeleting) {
-        // Typing
         if (currentText.length < currentPhrase.length) {
           setCurrentText(currentPhrase.slice(0, currentText.length + 1));
         } else {
-          // Wait before starting to delete
           setTimeout(() => setIsDeleting(true), delayBetweenPhrases);
           return;
         }
       } else {
-        // Deleting
         if (currentText.length > 0) {
           setCurrentText(currentText.slice(0, -1));
         } else {
@@ -50,4 +46,6 @@ export function TypeWriter({
       <span className="animate-blink">|</span>
     </span>
   );
-} 
+}
+
+

@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle, Users, Award, Clock } from "lucide-react";
+import { Users, Award, Clock, Shield } from "lucide-react";
 import Image from "next/image";
 
-export function About() {
+export function AboutSkyber() {
   return (
     <section id="about" className="py-20 bg-background/50 relative">
       <div className="container mx-auto px-4">
@@ -18,20 +18,21 @@ export function About() {
           >
             <div className="relative h-[400px] lg:h-[500px] w-full rounded-lg overflow-hidden">
               <Image
-                src="https://images.pexels.com/photos/3184302/pexels-photo-3184302.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt="Skyber Team"
+                src="https://images.pexels.com/photos/3184302/pexels-photo-3184302.jpeg"
+                alt="Skyber team collaboration"
                 fill
                 className="object-cover"
+                priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
             </div>
             <div className="absolute -bottom-8 -right-8 w-64 h-64 rounded-lg border border-border bg-card p-6 shadow-lg">
               <div className="flex flex-col h-full justify-between">
                 <div className="space-y-2">
-                  <div className="text-5xl font-bold text-[#17D492]">10+</div>
-                  <p className="text-lg font-medium">Years of Excellence</p>
+                  <div className="text-5xl font-bold text-[#17D492]">4+</div>
+                  <p className="text-lg font-medium">Years of Experience</p>
                 </div>
-                <p className="text-muted-foreground">Delivering top-tier cybersecurity and development solutions since 2013</p>
+                <p className="text-muted-foreground">Delivering secure, scalable, and modern digital solutions.</p>
               </div>
             </div>
           </motion.div>
@@ -40,43 +41,43 @@ export function About() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">About <span className="skyber-text">SKYBER</span></h2>
             <p className="text-muted-foreground mb-6">
-              Founded in 2013, <span className="skyber-text">SKYBER</span> has grown from a small security consulting firm to a comprehensive technology partner for businesses worldwide. Our mission is to secure and optimize your digital presence while driving innovation.
+              For over 4 years, <span className="skyber-text">SKYBER</span> has helped businesses secure and elevate their digital experiences. We blend cybersecurity expertise with product-grade development to build reliable, fast, and beautiful products.
             </p>
             <p className="text-muted-foreground mb-8">
-              We combine cutting-edge cybersecurity expertise with exceptional development capabilities to deliver solutions that are not just secure, but also intuitive, scalable, and aligned with your business objectives.
+              Our approach is simple: security-first architecture, performance-focused engineering, and design that your users love.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
               <div className="flex items-start">
-                <CheckCircle className="w-6 h-6 text-[#17D492] mr-3 mt-0.5" />
+                <Shield className="w-6 h-6 text-[#17D492] mr-3 mt-0.5" />
                 <div>
-                  <h4 className="font-medium mb-1">Industry Experts</h4>
-                  <p className="text-sm text-muted-foreground">Led by certified security professionals and senior developers</p>
+                  <h4 className="font-medium mb-1">Security-First</h4>
+                  <p className="text-sm text-muted-foreground">Threat modeling, secure coding, and continuous hardening.</p>
                 </div>
               </div>
               <div className="flex items-start">
-                <CheckCircle className="w-6 h-6 text-[#17D492] mr-3 mt-0.5" />
+                <Clock className="w-6 h-6 text-[#17D492] mr-3 mt-0.5" />
                 <div>
-                  <h4 className="font-medium mb-1">Custom Approach</h4>
-                  <p className="text-sm text-muted-foreground">Tailored solutions designed for your specific requirements</p>
+                  <h4 className="font-medium mb-1">On-Time Delivery</h4>
+                  <p className="text-sm text-muted-foreground">Reliable execution with clear roadmaps and milestones.</p>
                 </div>
               </div>
               <div className="flex items-start">
-                <CheckCircle className="w-6 h-6 text-[#17D492] mr-3 mt-0.5" />
+                <Users className="w-6 h-6 text-[#17D492] mr-3 mt-0.5" />
                 <div>
-                  <h4 className="font-medium mb-1">Continuous Support</h4>
-                  <p className="text-sm text-muted-foreground">Ongoing maintenance, updates, and security monitoring</p>
+                  <h4 className="font-medium mb-1">Collaborative</h4>
+                  <p className="text-sm text-muted-foreground">Work shoulder-to-shoulder with your team and stakeholders.</p>
                 </div>
               </div>
               <div className="flex items-start">
-                <CheckCircle className="w-6 h-6 text-[#17D492] mr-3 mt-0.5" />
+                <Award className="w-6 h-6 text-[#17D492] mr-3 mt-0.5" />
                 <div>
-                  <h4 className="font-medium mb-1">Transparent Process</h4>
-                  <p className="text-sm text-muted-foreground">Clear communication and regular progress updates</p>
+                  <h4 className="font-medium mb-1">Quality Assured</h4>
+                  <p className="text-sm text-muted-foreground">Reviews, testing, and monitoring baked into our process.</p>
                 </div>
               </div>
             </div>
@@ -86,22 +87,22 @@ export function About() {
                 <div className="w-10 h-10 bg-[#17D492]/10 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Users className="w-5 h-5 text-[#17D492]" />
                 </div>
-                <div className="text-2xl font-bold mb-1">200+</div>
-                <p className="text-sm text-muted-foreground">Clients Worldwide</p>
-              </div>
-              <div className="bg-card p-4 rounded-lg border border-border text-center">
-                <div className="w-10 h-10 bg-[#17D492]/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Award className="w-5 h-5 text-[#17D492]" />
-                </div>
-                <div className="text-2xl font-bold mb-1">50+</div>
-                <p className="text-sm text-muted-foreground">Industry Awards</p>
+                <div className="text-2xl font-bold mb-1">100+</div>
+                <p className="text-sm text-muted-foreground">Clients Served</p>
               </div>
               <div className="bg-card p-4 rounded-lg border border-border text-center">
                 <div className="w-10 h-10 bg-[#17D492]/10 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Clock className="w-5 h-5 text-[#17D492]" />
                 </div>
-                <div className="text-2xl font-bold mb-1">750+</div>
-                <p className="text-sm text-muted-foreground">Projects Delivered</p>
+                <div className="text-2xl font-bold mb-1">4+ yrs</div>
+                <p className="text-sm text-muted-foreground">Proven Track Record</p>
+              </div>
+              <div className="bg-card p-4 rounded-lg border border-border text-center">
+                <div className="w-10 h-10 bg-[#17D492]/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Award className="w-5 h-5 text-[#17D492]" />
+                </div>
+                <div className="text-2xl font-bold mb-1">250+</div>
+                <p className="text-sm text-muted-foreground">Projects & Releases</p>
               </div>
             </div>
           </motion.div>
@@ -110,3 +111,5 @@ export function About() {
     </section>
   );
 }
+
+

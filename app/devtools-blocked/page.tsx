@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -6,18 +6,13 @@ import { useRouter } from "next/navigation";
 import { Shield, Key } from "lucide-react";
 import { DisableDialog } from "@/components/security/disable-dialog";
 
-export default function DevToolsBlocked() {
+export default function DevtoolsBlocked() {
   const router = useRouter();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleDisableSubmit = (code: string) => {
-    // Set the disable flag with expiration time (1 hour from now)
     localStorage.setItem('devtools_disabled_until', (Date.now() + 3600000).toString());
-    
-    // Close the dialog and redirect to homepage
     setIsDialogOpen(false);
-    
-    // Use replace instead of push to prevent going back to the blocked page
     router.replace('/');
   };
 
@@ -34,28 +29,19 @@ export default function DevToolsBlocked() {
           Developer tools are not permitted on this site for security reasons.
         </p>
         <div className="flex gap-4 justify-center">
-        <Button 
-          onClick={() => router.push('/')}
-          className="bg-[#17D492] hover:bg-[#14c082] text-white"
-        >
-          Return to Homepage
-        </Button>
-          <Button 
-            onClick={() => setIsDialogOpen(true)}
-            variant="outline"
-            className="border-[#17D492] text-[#17D492] hover:bg-[#17D492]/10"
-          >
+          <Button onClick={() => router.push('/')} className="bg-[#17D492] hover:bg-[#14c082] text-white">
+            Return to Homepage
+          </Button>
+          <Button onClick={() => setIsDialogOpen(true)} variant="outline" className="border-[#17D492] text-[#17D492] hover:bg-[#17D492]/10">
             <Key className="w-4 h-4 mr-2" />
             Enter Disable Code
           </Button>
         </div>
       </div>
 
-      <DisableDialog 
-        isOpen={isDialogOpen}
-        onClose={() => setIsDialogOpen(false)}
-        onSubmit={handleDisableSubmit}
-      />
+      <DisableDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} onSubmit={handleDisableSubmit} />
     </div>
   );
-} 
+}
+
+

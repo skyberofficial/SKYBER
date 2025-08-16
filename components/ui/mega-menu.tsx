@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,11 +15,27 @@ import {
   Heart,
   Store,
   X,
-  ChevronRight
+  ChevronRight,
+  Scale,
+  Cookie,
+  Database,
+  RefreshCw,
+  AlertTriangle,
+  Copyright,
+  Clock,
+  Users,
+  CreditCard,
+  Lock,
+  UserCheck,
+  HeadphonesIcon,
+  Eye,
+  Baby,
+  Leaf,
+  HeartHandshake
 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { AnimatedButton } from "@/components/ui/animated-button";
+// import { AnimatedButton } from "@/components/ui/animated-button";
 
 interface MegaMenuProps {
   isOpen: boolean;
@@ -28,17 +44,60 @@ interface MegaMenuProps {
 
 export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
   const [activeTab, setActiveTab] = useState<string | null>(null);
+  const [isClosing, setIsClosing] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const isHomePage = pathname === "/";
   const isInsightsPage = pathname === "/insights";
-  const isPortfolioPage = pathname === "/portfolio";
+  const isBlogsPage = pathname === "/blogs";
+
+  // Handle menu closing
+  const handleClose = () => {
+    setIsClosing(true);
+    // Delay clearing activeTab to allow image fade out animation
+    setTimeout(() => {
+      setActiveTab(null);
+    }, 200); // 200ms = 0.2s to match the fade out duration
+    onClose();
+  };
+
+  // Reset closing state when menu opens
+  useEffect(() => {
+    if (isOpen) {
+      setIsClosing(false);
+    }
+  }, [isOpen]);
+
+  const getPolicyHref = (title: string): string => {
+    const policyMap: Record<string, string> = {
+      "Privacy Policy": "/policies/privacy-policy",
+      "Terms & Conditions": "/policies/terms-conditions",
+      "Cookie Policy": "/policies/cookie-policy",
+      "Data Protection Policy": "/policies/data-protection-policy",
+      "Refund & Cancellation": "/policies/refund-cancellation-policy",
+      "Disclaimer": "/policies/disclaimer",
+      "Intellectual Property": "/policies/intellectual-property-policy",
+      "Service Level Agreement": "/policies/service-level-agreement",
+      "Acceptable Use Policy": "/policies/acceptable-use-policy",
+      "Payment & Billing": "/policies/payment-billing-policy",
+      "Security Policy": "/policies/security-policy",
+      "Client Onboarding": "/policies/client-onboarding-policy",
+      "Support Policy": "/policies/support-policy",
+      "Accessibility Policy": "/policies/accessibility-policy",
+      "GDPR Compliance": "/policies/gdpr-compliance",
+      "Children's Privacy": "/policies/children-privacy-policy",
+      "Environmental Policy": "/policies/environmental-policy",
+      "Transparency & Ethics": "/policies/transparency-ethics-policy"
+    };
+    return policyMap[title] || "/policies";
+  };
 
   const mainNavItems = [
     { title: "About", href: "#about" },
     { title: "Insights", href: "#insights" },
-    { title: "Portfolio", href: "#portfolio" },
-    { title: "Contact", href: "#contact" }
+    { title: "Blogs", href: "#blogs" },
+    { title: "Contact", href: "#contact" },
+    { title: "Policies", href: "#policies" }
   ];
 
   const menuItems = {
@@ -111,103 +170,196 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
           image: "https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         }
       ]
+    },
+    policies: {
+      title: "Company Policies",
+      items: [
+        {
+          icon: <Shield className="w-6 h-6 text-[#17D492]" />,
+          title: "Privacy Policy",
+          description: "How we collect, use, and protect your data",
+          image: "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <Scale className="w-6 h-6 text-[#17D492]" />,
+          title: "Terms & Conditions",
+          description: "Rules for using our website and services",
+          image: "https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <Cookie className="w-6 h-6 text-[#17D492]" />,
+          title: "Cookie Policy",
+          description: "Our use of cookies and tracking technologies",
+          image: "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <Database className="w-6 h-6 text-[#17D492]" />,
+          title: "Data Protection Policy",
+          description: "How we store, secure, and handle your data",
+          image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <RefreshCw className="w-6 h-6 text-[#17D492]" />,
+          title: "Refund & Cancellation",
+          description: "Our refund and service cancellation terms",
+          image: "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <AlertTriangle className="w-6 h-6 text-[#17D492]" />,
+          title: "Disclaimer",
+          description: "Limitations of liability for site information",
+          image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <Copyright className="w-6 h-6 text-[#17D492]" />,
+          title: "Intellectual Property",
+          description: "Ownership of content, logos, and code",
+          image: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <Clock className="w-6 h-6 text-[#17D492]" />,
+          title: "Service Level Agreement",
+          description: "Our commitment to uptime and performance",
+          image: "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <Users className="w-6 h-6 text-[#17D492]" />,
+          title: "Acceptable Use Policy",
+          description: "Rules for using our services and platforms",
+          image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <CreditCard className="w-6 h-6 text-[#17D492]" />,
+          title: "Payment & Billing",
+          description: "Payment methods, invoicing, and fees",
+          image: "https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <Lock className="w-6 h-6 text-[#17D492]" />,
+          title: "Security Policy",
+          description: "Our cybersecurity measures and protocols",
+          image: "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <UserCheck className="w-6 h-6 text-[#17D492]" />,
+          title: "Client Onboarding",
+          description: "Steps from signup to project completion",
+          image: "https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <HeadphonesIcon className="w-6 h-6 text-[#17D492]" />,
+          title: "Support Policy",
+          description: "Support hours, channels, and response times",
+          image: "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <Eye className="w-6 h-6 text-[#17D492]" />,
+          title: "Accessibility Policy",
+          description: "Making our site usable for everyone",
+          image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <Shield className="w-6 h-6 text-[#17D492]" />,
+          title: "GDPR Compliance",
+          description: "How we comply with European data laws",
+          image: "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <Baby className="w-6 h-6 text-[#17D492]" />,
+          title: "Children's Privacy",
+          description: "Safe handling of minor data and COPPA compliance",
+          image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <Leaf className="w-6 h-6 text-[#17D492]" />,
+          title: "Environmental Policy",
+          description: "Our eco-friendly commitments and sustainability",
+          image: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        },
+        {
+          icon: <HeartHandshake className="w-6 h-6 text-[#17D492]" />,
+          title: "Transparency & Ethics",
+          description: "Our stance on fair practices and anti-corruption",
+          image: "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        }
+      ]
     }
   };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
     e.preventDefault();
-    
-    // Get Lenis instance from window
-    const lenis = (window as any).lenis;
-    
-    // Special handling for insights page
+    const lenis = (window as unknown as { lenis?: { scrollTo: (target: number | Element, opts?: Record<string, unknown>) => void } }).lenis;
+
     if (section === "#insights") {
       if (isInsightsPage) {
-        // If already on insights page, scroll to top with Lenis
-        if (lenis) {
-          lenis.scrollTo(0, { duration: 1.2 });
-        } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
+        if (lenis) { lenis.scrollTo(0, { duration: 1.2 }); } else { window.scrollTo({ top: 0, behavior: "smooth" }); }
       } else {
-        // Navigate to insights page
         router.push("/insights");
       }
-      onClose();
+      handleClose();
       return;
     }
 
-    // Special handling for about page
     if (section === "#about") {
       if (isHomePage) {
-        // If on home page, smooth scroll to about section with Lenis
         const element = document.querySelector(section);
-        if (element && lenis) {
-          lenis.scrollTo(element, { duration: 1.2, offset: -80 });
-        } else if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
+        const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        const offset = scrollTop > 10 ? -68 : -80; // Adjust offset based on scroll state
+        if (element && lenis) { lenis.scrollTo(element, { duration: 1.2, offset }); }
+        else if (element) { element.scrollIntoView({ behavior: "smooth" }); }
       } else {
-        // If not on home page, navigate to about page
         router.push("/about");
       }
-      onClose();
+      handleClose();
       return;
     }
 
-    // Special handling for portfolio page
-    if (section === "#portfolio") {
-      if (isPortfolioPage) {
-        // If already on portfolio page, scroll to top with Lenis
-        if (lenis) {
-          lenis.scrollTo(0, { duration: 1.2 });
-        } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
+    if (section === "#blogs") {
+      if (isBlogsPage) {
+        if (lenis) { lenis.scrollTo(0, { duration: 1.2 }); } else { window.scrollTo({ top: 0, behavior: "smooth" }); }
       } else {
-        // Navigate to portfolio page
-        router.push("/portfolio");
+        router.push("/blogs");
       }
-      onClose();
+      handleClose();
       return;
     }
 
-    // Special handling for contact page
     if (section === "#contact") {
       router.push("/contact");
-      onClose();
+      handleClose();
+      return;
+    }
+
+    if (section === "#policies") {
+      router.push("/policies");
+      handleClose();
       return;
     }
 
     if (isHomePage) {
-      // If on home page, smooth scroll to section with Lenis
       const element = document.querySelector(section);
-      if (element && lenis) {
-        lenis.scrollTo(element, { duration: 1.2, offset: -80 });
-      } else if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      const offset = scrollTop > 10 ? -68 : -80; // Adjust offset based on scroll state
+      if (element && lenis) { lenis.scrollTo(element, { duration: 1.2, offset }); }
+      else if (element) { element.scrollIntoView({ behavior: "smooth" }); }
     } else {
-      // If not on home page, navigate to home page with section hash
       router.push(`/${section}`);
     }
-    onClose();
+    handleClose();
   };
 
   return (
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50"
-            onClick={onClose}
+            onClick={handleClose}
           />
 
-          {/* Menu Panel */}
           <motion.div
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
@@ -219,30 +371,24 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
             <div className="p-6">
               <div className="flex justify-between items-center mb-8">
                 <div className="flex items-center space-x-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="40"
-                    height="40"
-                    viewBox="0 0 375 375"
+                  <Image
+                    src="/favicon.svg"
+                    alt="SKYBER Logo"
+                    width={40}
+                    height={40}
                     className="text-[#17D492] dark:text-[#17D492]"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M328.512 185.605h-54.512c-10.031 0-18.168 8.141-18.168 18.172v54.512c0 .324.07.629.094.945l-47.399 47.399h-26.312l-33.18-33.18c.535-1.984.899-4.031.899-6.188v-72.683c0-2.157-.376-4.204-.899-6.192l18.122-18.121c.316.012.62.098.945.098h54.512c10.03 0 18.172-8.14 18.172-18.172V97.684c0-10.028-8.141-18.169-18.172-18.169h-54.512c-.324 0-.629.07-.945.094l-28.551-28.551V19.723c0-6.688-5.426-12.117-12.114-12.117H90.152c-6.687 0-12.113 5.43-12.113 12.117v36.34c0 6.687 5.426 12.113 12.113 12.113h31.325l28.55 28.55c-.011.317-.093.633-.093.946v54.511c0 .328.07.63.094.946l-18.121 18.121c-1.985-.532-4.047-.895-6.203-.895H53.035c-13.387 0-24.226 10.84-24.226 24.227v72.684c0 13.383 10.84 24.226 24.226 24.226h72.684c2.156 0 4.203-.375 6.199-.898l33.168 33.168v31.328c0 6.684 5.426 12.114 12.114 12.114h36.344c6.683 0 12.113-5.43 12.113-12.114v-31.328l47.41-47.414c.316.015.621.097.945.097h54.512c10.031 0 18.172-8.14 18.172-18.168v-54.512c0-10.031-8.141-18.172-18.172-18.172z"
-                    />
-                  </svg>
+                  />
                   <span className="font-bold text-xl text-foreground skyber-text">SKYBER</span>
                 </div>
-                <Button variant="ghost" size="icon" onClick={onClose}>
+                <Button variant="ghost" size="icon" onClick={handleClose}>
                   <X className="w-6 h-6" />
                 </Button>
               </div>
 
               <div className="space-y-8">
-                {/* Main Navigation - Only visible on mobile/tablet */}
                 <div className="md:hidden">
                   <div className="grid grid-cols-2 gap-4">
-                    {mainNavItems.map((item, index) => (
+                    {mainNavItems.slice(0, 4).map((item, index) => (
                       <a
                         key={index}
                         href={item.href}
@@ -250,8 +396,9 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
                         className={cn(
                           "flex items-center justify-center p-3 rounded-lg border border-border hover:bg-secondary/50 hover:text-[#17D492] transition-colors font-medium",
                           (item.href === "#insights" && isInsightsPage) ||
-                          (item.href === "#portfolio" && isPortfolioPage) ||
-                          (item.href === "#about" && pathname === "/about")
+                          (item.href === "#blogs" && isBlogsPage) ||
+                          (item.href === "#about" && pathname === "/about") ||
+                          (item.href === "#policies" && pathname.startsWith("/policies"))
                             ? "bg-secondary/50 text-[#17D492]"
                             : ""
                         )}
@@ -260,16 +407,37 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
                       </a>
                     ))}
                   </div>
+                  {/* Policies button spanning full width */}
+                  <div className="mt-4">
+                    <a
+                      href="#policies"
+                      onClick={(e) => handleNavClick(e, "#policies")}
+                      className={cn(
+                        "flex items-center justify-center p-3 rounded-lg border border-border hover:bg-secondary/50 hover:text-[#17D492] transition-colors font-medium w-full",
+                        pathname.startsWith("/policies") ? "bg-secondary/50 text-[#17D492]" : ""
+                      )}
+                    >
+                      Policies
+                    </a>
+                  </div>
                 </div>
 
-                {/* Services Section */}
                 <div>
                   <h3 className="text-lg font-semibold mb-4">{menuItems.services.title}</h3>
                   <div className="space-y-4">
                     {menuItems.services.items.map((item, index) => (
                       <Link
                         key={index}
-                        href="#"
+                        href={
+                          item.title === "UI/UX Design" ? "/services/ui/ux" :
+                          item.title === "Cybersecurity Solutions" ? "/services/cybersecurity" :
+                          item.title === "Web Development" ? "/services/web-development" :
+                          item.title === "App Development" ? "/services/app-development" :
+                          item.title === "Custom Software" ? "/services/custom-software" :
+                          item.title === "Tech Consultation" ? "/services/tech-consultancy" :
+                          "/services"
+                        }
+                        onClick={handleClose}
                         className="group flex items-start space-x-4 p-3 rounded-lg hover:bg-secondary/50 transition-colors"
                         onMouseEnter={() => setActiveTab(`services-${index}`)}
                         onMouseLeave={() => setActiveTab(null)}
@@ -287,14 +455,14 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
                   </div>
                 </div>
 
-                {/* Industries Section */}
                 <div>
                   <h3 className="text-lg font-semibold mb-4">{menuItems.industries.title}</h3>
                   <div className="space-y-4">
                     {menuItems.industries.items.map((item, index) => (
                       <Link
                         key={index}
-                        href="#"
+                        href="/services"
+                        onClick={handleClose}
                         className="group flex items-start space-x-4 p-3 rounded-lg hover:bg-secondary/50 transition-colors"
                         onMouseEnter={() => setActiveTab(`industries-${index}`)}
                         onMouseLeave={() => setActiveTab(null)}
@@ -311,25 +479,58 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
                     ))}
                   </div>
                 </div>
+
+                <div>
+                  <h3 className="text-lg font-semibold mb-4">{menuItems.policies.title}</h3>
+                  <div className="space-y-4 max-h-96 overflow-y-auto">
+                    {menuItems.policies.items.map((item, index) => {
+                      const policyHref = getPolicyHref(item.title);
+                      return (
+                        <Link
+                          key={index}
+                          href={policyHref}
+                          onClick={handleClose}
+                          className="group flex items-start space-x-4 p-3 rounded-lg hover:bg-secondary/50 transition-colors"
+                          onMouseEnter={() => setActiveTab(`policies-${index}`)}
+                          onMouseLeave={() => setActiveTab(null)}
+                        >
+                          <div className="flex-shrink-0">{item.icon}</div>
+                          <div className="flex-grow">
+                            <h4 className="font-medium group-hover:text-[#17D492] transition-colors">
+                              {item.title}
+                            </h4>
+                            <p className="text-sm text-muted-foreground">{item.description}</p>
+                          </div>
+                          <ChevronRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Preview Image Panel */}
           <AnimatePresence>
             {activeTab && (
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
+                transition={{ 
+                  duration: isClosing ? 0.2 : 0.3,
+                  ease: isClosing ? "easeOut" : "easeInOut"
+                }}
                 className="fixed top-0 right-0 h-screen w-[calc(100%-400px)] bg-background border-l border-border z-50 hidden lg:block"
               >
                 <div className="relative h-full">
                   <Image
                     src={
-                      activeTab.startsWith("services")
-                        ? menuItems.services.items[parseInt(activeTab.split("-")[1])].image
-                        : menuItems.industries.items[parseInt(activeTab.split("-")[1])].image
+                                              activeTab.startsWith("services")
+                          ? menuItems.services.items[parseInt(activeTab.split("-")[1])].image
+                          : activeTab.startsWith("industries")
+                          ? menuItems.industries.items[parseInt(activeTab.split("-")[1])].image
+                          : menuItems.policies.items[parseInt(activeTab.split("-")[1])].image
                     }
                     alt="Preview"
                     fill
@@ -344,4 +545,6 @@ export function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
       )}
     </AnimatePresence>
   );
-} 
+}
+
+

@@ -142,20 +142,7 @@ export function Testimonials() {
             </div>
           </div>
           
-          <div className="mt-6 flex justify-center space-x-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setAutoplay(false);
-                  setCurrent(index);
-                }}
-                className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                  index === current ? "bg-[#17D492]" : "bg-muted-foreground/30"
-                }`}
-              />
-            ))}
-          </div>
+          {/* Removed bullet point indicators */}
         </div>
         
         <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">

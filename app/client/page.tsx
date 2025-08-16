@@ -14,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Image from "next/image";
 
 export default function ClientLogin() {
   const router = useRouter();
@@ -79,7 +80,7 @@ export default function ClientLogin() {
                 )}
                 
                 <div className="space-y-1">
-                  <div className="flex items-center space-x-2">
+                  <div className="grid grid-cols-[auto,1fr] items-center gap-2 w-full">
                     <label htmlFor="role" className="text-sm font-bold text-foreground whitespace-nowrap tracking-wide">
                       I AM A
                     </label>
@@ -87,7 +88,7 @@ export default function ClientLogin() {
                       value={role}
                       onValueChange={setRole}
                     >
-                      <SelectTrigger className="bg-background focus:ring-0 focus:ring-offset-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none">
+                      <SelectTrigger className="w-full bg-background focus:ring-0 focus:ring-offset-0 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none">
                         <SelectValue placeholder="Select your role" />
                       </SelectTrigger>
                       <SelectContent>
@@ -211,18 +212,13 @@ export default function ClientLogin() {
         <div className="flex flex-col items-center justify-center space-y-6 order-1 lg:order-2">
           <Link href="/" className="inline-block">
             <div className="flex flex-col items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="120"
-                height="120"
-                viewBox="0 0 375 375"
+              <Image
+                src="/favicon.svg"
+                alt="SKYBER Logo"
+                width={120}
+                height={120}
                 className="text-[#17D492] mb-6"
-              >
-                <path
-                  fill="currentColor"
-                  d="M328.512 185.605h-54.512c-10.031 0-18.168 8.141-18.168 18.172v54.512c0 .324.07.629.094.945l-47.399 47.399h-26.312l-33.18-33.18c.535-1.984.899-4.031.899-6.188v-72.683c0-2.157-.376-4.204-.899-6.192l18.122-18.121c.316.012.62.098.945.098h54.512c10.03 0 18.172-8.14 18.172-18.172V97.684c0-10.028-8.141-18.169-18.172-18.169h-54.512c-.324 0-.629.07-.945.094l-28.551-28.551V19.723c0-6.688-5.426-12.117-12.114-12.117H90.152c-6.687 0-12.113 5.43-12.113 12.117v36.34c0 6.687 5.426 12.113 12.113 12.113h31.325l28.55 28.55c-.011.317-.093.633-.093.946v54.511c0 .328.07.63.094.946l-18.121 18.121c-1.985-.532-4.047-.895-6.203-.895H53.035c-13.387 0-24.226 10.84-24.226 24.227v72.684c0 13.383 10.84 24.226 24.226 24.226h72.684c2.156 0 4.203-.375 6.199-.898l33.168 33.168v31.328c0 6.684 5.426 12.114 12.114 12.114h36.344c6.683 0 12.113-5.43 12.113-12.114v-31.328l47.41-47.414c.316.015.621.097.945.097h54.512c10.031 0 18.172-8.14 18.172-18.168v-54.512c0-10.031-8.141-18.172-18.172-18.172z"
-                />
-              </svg>
+              />
               <span className="text-4xl font-bold text-foreground">SKYBER</span>
             </div>
           </Link>

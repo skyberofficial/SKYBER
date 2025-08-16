@@ -1,171 +1,114 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter, Orbitron } from 'next/font/google';
-import { ThemeProvider } from '@/components/theme/theme-provider';
-import Header from '@/components/layout/header';
-import Footer from '@/components/layout/footer';
-import { Preloader } from '@/components/preloader';
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
-import { PageSecurity } from '@/components/security/page-security';
-import ClientLayout from './client-layout';
-import { StagewiseDevTools } from '@/components/dev/stagewise-toolbar';
-import { PerformanceDashboard } from '@/components/dev/performance-dashboard';
-import { WDYRProvider } from '@/components/dev/wdyr-provider';
-import { LenisProvider } from '@/components/smooth-scroll/lenis-provider';
-import { BarbaProvider } from '@/components/smooth-scroll/barba-provider';
-import { BackToTop } from '@/components/ui/back-to-top';
+import type { Metadata } from "next";
+import { Inter, Orbitron } from "next/font/google";
+import "./globals.css";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+import { ThemeProvider } from "@/components/theme/theme-provider";
+import { BackToTop } from "@/components/ui/back-to-top";
+import { PageSecurity } from "@/components/security/page-security";
+import { Preloader } from "@/components/preloader";
+import { FloatingWidget } from "@/components/ui/floating-widget";
+import NewsletterProvider from "@/components/layout/newsletter-provider";
 
 const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
+  subsets: ["latin"],
+  display: "swap",
   fallback: [
-    '-apple-system',
-    'BlinkMacSystemFont',
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    'sans-serif'
-  ]
+    "-apple-system",
+    "BlinkMacSystemFont",
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    "sans-serif",
+  ],
 });
 
-const orbitron = Orbitron({ 
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '500', '600', '700', '800', '900'],
-  variable: '--font-orbitron',
-  fallback: [
-    'Arial',
-    'sans-serif'
-  ]
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-orbitron",
+  fallback: ["Arial", "sans-serif"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://skyber.com'),
-  title: {
-    default: 'SKYBER | Cybersecurity & Web Development',
-    template: '%s | SKYBER'
+  title: "SKYBER - Protect. Build. Evolve.",
+  description: "SKYBER is a security-minded studio crafting resilient digital products. From idea to launch, we embed privacy, performance and maintainability into every decision.",
+  keywords: ["cybersecurity", "web development", "app development", "UI/UX design", "technology consulting", "digital security", "software development"],
+  authors: [{ name: "SKYBER Team" }],
+  creator: "SKYBER",
+  publisher: "SKYBER",
+  robots: "index, follow",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://skyber.com",
+    title: "SKYBER - Protect. Build. Evolve.",
+    description: "SKYBER is a security-minded studio crafting resilient digital products. From idea to launch, we embed privacy, performance and maintainability into every decision.",
+    siteName: "SKYBER",
   },
-  description: 'Professional cybersecurity solutions and full-stack web development services for businesses and startups. Secure your digital future with SKYBER.',
-  keywords: [
-    'cybersecurity',
-    'web development',
-    'app development',
-    'custom software',
-    'UI/UX design',
-    'tech consultation',
-    'security solutions',
-    'digital transformation'
-  ],
-  authors: [{ name: 'SKYBER' }],
-  creator: 'SKYBER',
-  publisher: 'SKYBER',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+  twitter: {
+    card: "summary_large_image",
+    title: "SKYBER - Protect. Build. Evolve.",
+    description: "SKYBER is a security-minded studio crafting resilient digital products. From idea to launch, we embed privacy, performance and maintainability into every decision.",
+    creator: "@skyber",
   },
   icons: {
     icon: [
-      { url: '/favicon.svg' },
-      { url: '/favicon.ico' },
-    ],
-    apple: [
-      { url: '/apple-icon.png' },
-    ],
-    other: [
       {
-        rel: 'mask-icon',
         url: '/favicon.svg',
+        type: 'image/svg+xml',
       },
     ],
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
   },
   manifest: '/site.webmanifest',
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://skyber.com',
-    siteName: 'SKYBER',
-    title: 'SKYBER | Cybersecurity & Web Development',
-    description: 'Professional cybersecurity solutions and full-stack web development services for businesses and startups. Secure your digital future with SKYBER.',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'SKYBER - Cybersecurity & Web Development'
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'SKYBER | Cybersecurity & Web Development',
-    description: 'Professional cybersecurity solutions and full-stack web development services for businesses and startups. Secure your digital future with SKYBER.',
-    images: ['/og-image.jpg'],
-    creator: '@skyber',
-    site: '@skyber'
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    google: 'your-google-verification-code',
-    yandex: 'your-yandex-verification-code',
-    yahoo: 'your-yahoo-verification-code',
-    other: {
-      me: ['your-personal-website'],
-    },
-  },
-  alternates: {
-    canonical: 'https://skyber.com',
-    languages: {
-      'en-US': 'https://skyber.com',
-    },
-  },
-  category: 'technology'
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`no-scrollbar ${orbitron.variable}`}>
-      <body className={`${inter.className} no-scrollbar overflow-x-hidden`}>
+    <html lang="en" className={`${orbitron.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Meta tags for better SEO and mobile experience */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="theme-color" content="#17D492" />
+        <meta name="msapplication-TileColor" content="#17D492" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="SKYBER" />
+        
+        {/* Favicon */}
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="alternate icon" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.svg" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
+        
+        {/* TrustBox script */}
+        <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+        {/* End TrustBox script */}
+      </head>
+      <body className={`${inter.className} antialiased`} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <LenisProvider>
-            <BarbaProvider>
-              <ClientLayout>
-                <WDYRProvider />
-                <PageSecurity />
-                <Preloader />
-                <div className="flex min-h-screen flex-col no-scrollbar overflow-x-hidden">
-                  <Header />
-                  <main className="flex-grow no-scrollbar overflow-x-hidden">{children}</main>
-                  <Footer />
-                </div>
-                <BackToTop />
-                <SpeedInsights />
-                <Analytics />
-                <StagewiseDevTools />
-                <PerformanceDashboard />
-              </ClientLayout>
-            </BarbaProvider>
-          </LenisProvider>
+          <div className="flex min-h-screen flex-col">
+            <Preloader />
+            <PageSecurity />
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
+          <BackToTop />
+          <FloatingWidget />
+          <NewsletterProvider />
         </ThemeProvider>
       </body>
     </html>
