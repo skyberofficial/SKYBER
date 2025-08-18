@@ -245,7 +245,7 @@ export default function TechConsultancyServicesPage() {
               className="max-w-4xl mx-auto text-center bg-[#17D492]/5 rounded-2xl p-12 border border-[#17D492]/10"
             >
               <h2 className="text-4xl font-bold mb-4">Ready to Transform Your Technology Strategy?</h2>
-              <p className="text-xl text-muted-foreground mb-8">Let's work together to optimize your technology decisions and drive growth</p>
+              <p className="text-xl text-muted-foreground mb-8">Let&apos;s work together to optimize your technology decisions and drive growth</p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button size="lg" className="bg-[#17D492] hover:bg-[#17D492]/90">
                   Schedule Consultation <ArrowRight className="ml-2 h-4 w-4" />

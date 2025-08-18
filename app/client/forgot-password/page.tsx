@@ -194,7 +194,7 @@ export default function ForgotPassword() {
                   <div className="space-y-2">
                     <h3 className="text-lg font-semibold">Check Your Email</h3>
                     <p className="text-sm text-muted-foreground">
-                      We've sent password reset instructions to {email}
+                      We&apos;ve sent password reset instructions to {email}
                     </p>
                   </div>
                   <Button
@@ -242,8 +242,8 @@ export default function ForgotPassword() {
               {step === "success" && "Almost There!"}
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              {step === "email" && "Don't worry! It happens. Please enter your email address linked with your account."}
-              {step === "otp" && "We've sent a verification code to your email. Please enter it to continue."}
+              {step === "email" && "Don&apos;t worry! It happens. Please enter your email address linked with your account."}
+              {step === "otp" && "We&apos;ve sent a verification code to your email. Please enter it to continue."}
               {step === "success" && "Check your email for instructions to reset your password and secure your account."}
             </p>
           </div>

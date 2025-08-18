@@ -49,7 +49,7 @@ export default function ChildrenPrivacyPolicyPage() {
       <div id="contact">
         <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginTop: '2rem', marginBottom: '1rem' }}>Contact</h2>
         <p>
-          Parents with concerns about children's data should contact support@skyber.codes.
+          Parents with concerns about children&apos;s data should contact support@skyber.codes.
         </p>
         <p>
           For immediate assistance, use LUMI - Advanced AI Chat Support.

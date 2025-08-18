@@ -284,11 +284,11 @@ export function FloatingWidget() {
                 Coming Soon!
               </p>
               <p className="text-gray-400 text-xs mb-2">
-                We're building something amazing for you.
+                We&apos;re building something amazing for you.
               </p>
               <div className="bg-gray-800/50 rounded-lg p-2 sm:p-3 border border-[#17D492]/20">
                 <p className="text-[#17D492] text-xs font-semibold mb-1">
-                  🚀 What's Coming:
+                  🚀 What&apos;s Coming:
                 </p>
                 <ul className="text-gray-400 text-xs space-y-1 text-left">
                   <li>• AI-powered cybersecurity assistance</li>

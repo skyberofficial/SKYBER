@@ -169,7 +169,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
                        <CheckCircle className="w-8 h-8 text-white" />
                      </div>
                      <h3 className="text-xl font-semibold text-white mb-2">Welcome to Tech Insights!</h3>
-                     <p className="text-white/80">You're now subscribed to our cybersecurity & tech newsletter.</p>
+                     <p className="text-white/80">You&apos;re now subscribed to our cybersecurity & tech newsletter.</p>
                    </div>
                  </motion.div>
               )}

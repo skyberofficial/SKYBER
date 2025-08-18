@@ -93,7 +93,7 @@ export default function PrivacyPolicyPage() {
             We may also collect information on how our services are accessed and used. This Usage Data may include:
           </p>
           <ul>
-            <li>Your computer's Internet Protocol address (IP address)</li>
+            <li>Your computer&apos;s Internet Protocol address (IP address)</li>
             <li>Browser type and version</li>
             <li>The pages of our service that you visit</li>
             <li>The time and date of your visits</li>
@@ -315,7 +315,7 @@ export default function PrivacyPolicyPage() {
       </div>
 
       <div id="children-privacy">
-        <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginTop: '2rem', marginBottom: '1rem' }}>Children's Privacy</h2>
+        <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginTop: '2rem', marginBottom: '1rem' }}>Children&apos;s Privacy</h2>
         <p>
           Our services do not address anyone under the age of 13. We do not knowingly collect personally 
           identifiable information from anyone under the age of 13. If you are a parent or guardian and 
@@ -325,7 +325,7 @@ export default function PrivacyPolicyPage() {
         <div id="coppa-compliance">
           <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginTop: '1.5rem', marginBottom: '0.75rem' }}>COPPA Compliance</h3>
           <p>
-            We comply with the Children's Online Privacy Protection Act (COPPA) and do not knowingly collect 
+            We comply with the Children&apos;s Online Privacy Protection Act (COPPA) and do not knowingly collect 
             personal information from children under 13 without parental consent. If we become aware that 
             we have collected personal information from a child under 13 without parental consent, 
             we will take steps to delete such information.
@@ -336,7 +336,7 @@ export default function PrivacyPolicyPage() {
           <h3 style={{ fontSize: '24px', fontWeight: 'bold', marginTop: '1.5rem', marginBottom: '0.75rem' }}>Parental Controls</h3>
           <p>
             Parents and guardians can review, request deletion of, or refuse further collection of their 
-            child's personal information. If you believe we have collected information from a child under 13, 
+            child&apos;s personal information. If you believe we have collected information from a child under 13, 
             please contact us immediately.
           </p>
         </div>
@@ -346,7 +346,7 @@ export default function PrivacyPolicyPage() {
         <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginTop: '2rem', marginBottom: '1rem' }}>Policy Updates</h2>
         <p>
           We may update our Privacy Policy from time to time. We will notify you of any changes by posting 
-          the new Privacy Policy on this page and updating the "Last Updated" date at the top of this policy.
+          the new Privacy Policy on this page and updating the &quot;Last Updated&quot; date at the top of this policy.
         </p>
 
         <div id="notification">

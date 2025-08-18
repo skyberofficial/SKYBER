@@ -13,8 +13,8 @@ interface PerformanceTrackerProps {
 
 export const PerformanceTracker = React.memo<PerformanceTrackerProps>(
   ({ children, componentName, trackProps = true, trackState = true, className = "" }) => {
-    if (process.env.NODE_ENV === 'development' && (process.env as any).WDYR === 'true') {
-      (PerformanceTracker as any).whyDidYouRender = {
+    if (process.env.NODE_ENV === 'development' && (process.env as { WDYR?: string }).WDYR === 'true') {
+      (PerformanceTracker as { whyDidYouRender?: Record<string, unknown> }).whyDidYouRender = {
         customName: componentName,
         trackHooks: true,
         trackProps,

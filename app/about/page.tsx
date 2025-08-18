@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Shield, Code2, Award, Target, Sparkles } from "lucide-react";
 import { AnimatedButton } from "@/components/ui/animated-button";
 import { Progress } from "@/components/ui/progress";
+import cyberSecurityAnimation from "@/public/animations/cyber-security.json";
 
 const capabilities = [
   {
@@ -82,7 +83,7 @@ export default function AboutPage() {
               className="order-1 lg:order-2 relative h-[320px] sm:h-[420px] lg:h-[520px]"
             >
               <Lottie
-                animationData={require("@/public/animations/cyber-security.json")}
+                animationData={cyberSecurityAnimation}
                 className="absolute inset-0 h-full w-full"
                 loop
               />

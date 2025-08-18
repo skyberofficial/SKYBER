@@ -1,10 +1,12 @@
 'use client';
 
+import React from 'react';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Code, Globe, Monitor, Server, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
+import Script from "next/script";
 
 const webDevelopmentServices = [
   {
@@ -60,7 +62,65 @@ const projects = [
 
 export default function WebDevelopmentServicesPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <Script
+        id="web-development-service-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Web Development Services",
+            "description": "Custom web solutions that drive growth and enhance user experience. Professional web development services including frontend, backend, e-commerce, and CMS development.",
+            "provider": {
+              "@type": "Organization",
+              "name": "SKYBER",
+              "url": "https://skyber.dev"
+            },
+            "serviceType": "Web Development",
+            "areaServed": "Worldwide",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Web Development Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Frontend Development",
+                    "description": "Modern, responsive user interfaces built with cutting-edge technologies"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Backend Development",
+                    "description": "Robust server-side solutions with scalable architecture and APIs"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "E-commerce Solutions",
+                    "description": "Complete online store platforms with payment processing and inventory management"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "CMS Development",
+                    "description": "Custom content management systems for easy website administration"
+                  }
+                }
+              ]
+            }
+          })
+        }}
+      />
+      <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="min-h-[calc(100vh-5rem)] relative overflow-hidden mt-20 hero-section flex items-center">
         <div className="container mx-auto px-4 relative">
@@ -245,7 +305,7 @@ export default function WebDevelopmentServicesPage() {
               className="max-w-4xl mx-auto text-center bg-[#17D492]/5 rounded-2xl p-12 border border-[#17D492]/10"
             >
               <h2 className="text-4xl font-bold mb-4">Ready to Build Your Web Presence?</h2>
-              <p className="text-xl text-muted-foreground mb-8">Let's create a powerful web solution that drives your business forward</p>
+              <p className="text-xl text-muted-foreground mb-8">Let&apos;s create a powerful web solution that drives your business forward</p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button size="lg" className="bg-[#17D492] hover:bg-[#17D492]/90">
                   Start Your Project <ArrowRight className="ml-2 h-4 w-4" />
@@ -256,6 +316,7 @@ export default function WebDevelopmentServicesPage() {
           </div>
         </section>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

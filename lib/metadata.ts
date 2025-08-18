@@ -3,8 +3,8 @@ import { Metadata } from 'next';
 export const siteConfig = {
   name: 'SKYBER',
   description: 'SKYBER is a security-minded studio crafting resilient digital products. From idea to launch, we embed privacy, performance and maintainability into every decision.',
-  url: 'https://skybersupport.me',
-  ogImage: 'https://skybersupport.me/og-image.jpg',
+  url: 'https://skyber.dev',
+  ogImage: 'https://skyber.dev/og-image.jpg',
   links: {
     twitter: 'https://twitter.com/skyber',
     github: 'https://github.com/skyber',

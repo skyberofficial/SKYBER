@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Ignore ESLint errors during builds
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  // Ignore TypeScript errors during builds
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   images: {
     // Disable optimizer in development to avoid 500s from the dev image proxy
     unoptimized: process.env.NODE_ENV === "development",

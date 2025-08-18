@@ -1,12 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Shield, Lock, Zap } from "lucide-react";
 import { TypeWriter } from "@/components/ui/TypeWriter";
 import { AnimatedMesh } from "@/components/ui/animated-mesh";
 import { AnimatedButton } from "@/components/ui/animated-button";
+import { GetStartedFormSimple } from "@/components/forms/get-started-form-simple";
 
 const FeatureItem = React.memo<{
   icon: React.ComponentType<{ className?: string }>;
@@ -23,6 +24,8 @@ const FeatureItem = React.memo<{
 FeatureItem.displayName = 'FeatureItem';
 
 const HeroContent = React.memo(() => {
+  const [showForm, setShowForm] = useState(false);
+  
   const phrases = [
     "Enhanced AI Security Features",
     "Smart Cybersecurity & Tech",
@@ -32,41 +35,50 @@ const HeroContent = React.memo(() => {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="text-center lg:text-left space-y-4 md:space-y-6"
-    >
-      <div className="inline-flex items-center px-3 py-1 rounded-full border border-border bg-background/50 backdrop-blur-sm text-sm font-medium">
-        <span className="text-[#17D492] mr-2">New</span>
-        <TypeWriter phrases={phrases} typingSpeed={80} deletingSpeed={40} delayBetweenPhrases={3000} />
-      </div>
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center lg:text-left space-y-4 md:space-y-6"
+      >
+        <div className="inline-flex items-center px-3 py-1 rounded-full border border-border bg-background/50 backdrop-blur-sm text-sm font-medium">
+          <span className="text-[#17D492] mr-2">New</span>
+          <TypeWriter phrases={phrases} typingSpeed={80} deletingSpeed={40} delayBetweenPhrases={3000} />
+        </div>
 
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-        Secure Your Digital<br className="hidden md:block" /> Future With{" "}
-        <span className="text-[#17D492] skyber-text">SKYBER</span>
-      </h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+          Secure Your Digital<br className="hidden md:block" /> Future With{" "}
+          <span className="text-[#17D492] skyber-text">SKYBER</span>
+        </h1>
 
-      <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0">
-        Leading cybersecurity solutions and exceptional web development to protect your business and accelerate your online growth.
-      </p>
+        <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0">
+          Leading cybersecurity solutions and exceptional web development to protect your business and accelerate your online growth.
+        </p>
 
-      <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-        <AnimatedButton size="lg" className="w-full sm:w-auto" showArrow>
-          Get Started
-        </AnimatedButton>
-        <AnimatedButton href="/about" size="lg" variant="outline" className="w-full sm:w-auto">
-          About Us
-        </AnimatedButton>
-      </div>
+        <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+          <AnimatedButton 
+            size="lg" 
+            className="w-full sm:w-auto" 
+            showArrow
+            onClick={() => setShowForm(true)}
+          >
+            Get Started
+          </AnimatedButton>
+          <AnimatedButton href="/about" size="lg" variant="outline" className="w-full sm:w-auto">
+            About Us
+          </AnimatedButton>
+        </div>
 
-      <div className="grid grid-cols-3 gap-3 pt-2 md:pt-4">
-        <FeatureItem icon={Shield} text="99.9% Uptime" />
-        <FeatureItem icon={Lock} text="SOC 2 Certified" />
-        <FeatureItem icon={Zap} text="24/7 Support" />
-      </div>
-    </motion.div>
+        <div className="grid grid-cols-3 gap-3 pt-2 md:pt-4">
+          <FeatureItem icon={Shield} text="99.9% Uptime" />
+          <FeatureItem icon={Lock} text="SOC 2 Certified" />
+          <FeatureItem icon={Zap} text="24/7 Support" />
+        </div>
+      </motion.div>
+
+      <GetStartedFormSimple open={showForm} onOpenChange={setShowForm} />
+    </>
   );
 });
 

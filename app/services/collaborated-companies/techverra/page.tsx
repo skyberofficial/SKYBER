@@ -482,7 +482,7 @@ export default function TechVerraSupportPage() {
               Ready to Get Expert Technical Support?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Don't let technical issues slow down your business. Get professional support from TechVerra today.
+              Don&apos;t let technical issues slow down your business. Get professional support from TechVerra today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 

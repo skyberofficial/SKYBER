@@ -196,7 +196,7 @@ export default function ClientLogin() {
             </CardContent>
             <CardFooter className="flex flex-col space-y-4 border-t border-border pt-4">
               <div className="text-center text-sm">
-                <span className="text-muted-foreground">Don't have an account? </span>
+                <span className="text-muted-foreground">Don&apos;t have an account? </span>
                 <Link href="/client/contact" className="text-primary hover:text-primary/90">
                   Contact us
                 </Link>

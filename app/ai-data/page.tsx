@@ -53,7 +53,7 @@ export default function AIDataPage() {
     content: '',
     category: 'general',
     tags: '',
-    priority: 'medium' as const
+    priority: 'medium' as 'low' | 'medium' | 'high'
   });
 
   useEffect(() => {
@@ -225,7 +225,7 @@ export default function AIDataPage() {
                   </select>
                   <select
                     value={newEntry.priority}
-                    onChange={(e) => setNewEntry(prev => ({ ...prev, priority: e.target.value as any }))}
+                    onChange={(e) => setNewEntry(prev => ({ ...prev, priority: e.target.value as 'low' | 'medium' | 'high' }))}
                     className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white"
                   >
                     <option value="low">Low</option>

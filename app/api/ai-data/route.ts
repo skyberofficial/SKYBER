@@ -145,7 +145,7 @@ export async function POST(req: NextRequest) {
       title,
       content,
       category,
-      tags: Array.isArray(tags) ? tags : tags.split(',').map(tag => tag.trim()).filter(tag => tag),
+      tags: Array.isArray(tags) ? tags : tags.split(',').map((tag: string) => tag.trim()).filter((tag: string) => tag),
       priority: priority || 'medium',
       isActive: true,
       createdAt: new Date().toISOString()

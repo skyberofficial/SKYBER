@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import { BackToTop } from "@/components/ui/back-to-top";
+
 import { PageSecurity } from "@/components/security/page-security";
 import { Preloader } from "@/components/preloader";
 import { FloatingWidget } from "@/components/ui/floating-widget";
@@ -106,7 +106,7 @@ export default function RootLayout({
             <main className="flex-grow">{children}</main>
             <Footer />
           </div>
-          <BackToTop />
+
           <FloatingWidget />
           <NewsletterProvider />
         </ThemeProvider>

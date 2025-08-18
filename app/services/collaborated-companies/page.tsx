@@ -242,7 +242,7 @@ export default function CollaboratedCompaniesPage() {
           >
             <h2 className="text-4xl font-bold mb-4">Interested in Partnership?</h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Let's explore how we can work together to create innovative solutions and grow our businesses
+              Let&apos;s explore how we can work together to create innovative solutions and grow our businesses
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button size="lg" className="bg-[#17D492] hover:bg-[#14c082] text-white">

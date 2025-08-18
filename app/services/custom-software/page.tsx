@@ -244,7 +244,7 @@ const CustomSoftwarePage: React.FC = () => {
                 Ready to Build Something Amazing?
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Let's discuss your project and create a custom software solution that transforms your business
+                Let&apos;s discuss your project and create a custom software solution that transforms your business
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

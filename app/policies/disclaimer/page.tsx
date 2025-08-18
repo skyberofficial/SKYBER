@@ -36,7 +36,7 @@ export default function DisclaimerPage() {
         <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginTop: '2rem', marginBottom: '1rem' }}>No Warranties</h2>
         <p>
           Your use of the site and our services is at your sole risk. The site and services are
-          provided on an "as-is" and "as-available" basis without warranties of any kind, whether
+          provided on an &quot;as-is&quot; and &quot;as-available&quot; basis without warranties of any kind, whether
           express or implied, including implied warranties of merchantability, fitness for a
           particular purpose, and non-infringement.
         </p>

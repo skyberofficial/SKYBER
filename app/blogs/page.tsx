@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Search, Calendar, User, ArrowRight, BookOpen, Shield, Code, Smartphone, Palette, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -279,9 +280,11 @@ export default function BlogsPage() {
                 >
                   <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
                     <div className="relative overflow-hidden rounded-t-lg">
-                      <img
+                      <Image
                         src={post.image}
                         alt={post.title}
+                        width={400}
+                        height={192}
                         className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute top-4 left-4">
@@ -353,9 +356,11 @@ export default function BlogsPage() {
               >
                 <Card className="group hover:shadow-lg transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm h-full">
                   <div className="relative overflow-hidden rounded-t-lg">
-                    <img
+                    <Image
                       src={post.image}
                       alt={post.title}
+                      width={400}
+                      height={160}
                       className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-4 left-4">

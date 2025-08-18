@@ -2,7 +2,7 @@
 
 import { PolicyTemplate } from "@/components/ui/policy-template";
 
-const sections = [
+const sections: Array<{ id: string; title: string; level: 1 | 2 | 3 }> = [
   { id: "overview", title: "Overview", level: 1 },
   { id: "acceptance", title: "Acceptance of Terms", level: 1 },
   { id: "services", title: "Description of Services", level: 1 },

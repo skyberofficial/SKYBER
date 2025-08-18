@@ -6,8 +6,10 @@ import { useInView } from 'react-intersection-observer';
 import dynamic from 'next/dynamic';
 import { Send, Phone, Mail, MapPin, MessageSquare, Clock } from 'lucide-react';
 import { AnimatedButton } from '@/components/ui/animated-button';
-import { GoogleMapComponent } from '@/components/map/google-map';
+
 import { MapLibreComponent } from '@/components/map/maplibre-map';
+import contactHeroAnimation from '@/public/animations/contact-hero.json';
+import messageSentAnimation from '@/public/animations/message-sent.json';
 
 // Dynamically import Lottie to ensure it only runs on client
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
@@ -58,11 +60,11 @@ export default function ContactPage() {
                 className="text-center lg:text-left"
               >
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-                  Let's Start a
+                  Let&apos;s Start a
                   <span className="text-[#17D492] block mt-2">Conversation</span>
                 </h1>
                 <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8">
-                  Have a project in mind? We'd love to hear about it. Let's discuss how we can help bring your ideas to life.
+                  Have a project in mind? We&apos;d love to hear about it. Let&apos;s discuss how we can help bring your ideas to life.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto lg:mx-0">
                   <div className="flex items-center gap-3 p-4 rounded-lg bg-card border border-border hover:border-[#17D492]/50 transition-colors">
@@ -91,7 +93,7 @@ export default function ContactPage() {
                 {/* Main Contact Animation */}
                 <div className="absolute inset-0">
                   <Lottie
-                    animationData={require("@/public/animations/contact-hero.json")}
+                    animationData={contactHeroAnimation}
                     className="w-full h-full"
                     loop={true}
                   />
@@ -198,7 +200,7 @@ export default function ContactPage() {
             >
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
-                <p className="text-muted-foreground">Fill out the form below and we'll get back to you shortly.</p>
+                                  <p className="text-muted-foreground">Fill out the form below and we&apos;ll get back to you shortly.</p>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
@@ -284,7 +286,7 @@ export default function ContactPage() {
                 <div className="lg:col-span-2 space-y-6">
                   <div className="relative h-[200px]">
                     <Lottie
-                      animationData={require("@/public/animations/message-sent.json")}
+                      animationData={messageSentAnimation}
                       className="w-full h-full"
                       loop={true}
                     />

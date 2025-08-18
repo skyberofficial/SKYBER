@@ -245,7 +245,7 @@ export default function AppDevelopmentServicesPage() {
               className="max-w-4xl mx-auto text-center bg-[#17D492]/5 rounded-2xl p-12 border border-[#17D492]/10"
             >
               <h2 className="text-4xl font-bold mb-4">Ready to Build Your Mobile App?</h2>
-              <p className="text-xl text-muted-foreground mb-8">Let's create an engaging mobile experience that your users will love</p>
+              <p className="text-xl text-muted-foreground mb-8">Let&apos;s create an engaging mobile experience that your users will love</p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button size="lg" className="bg-[#17D492] hover:bg-[#17D492]/90">
                   Start App Development <ArrowRight className="ml-2 h-4 w-4" />

@@ -135,7 +135,7 @@ const CareerPage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
             >
-              We're building something incredible and looking for passionate individuals 
+              We&apos;re building something incredible and looking for passionate individuals 
               who want to make a difference in the tech world
             </motion.p>
 
@@ -207,7 +207,7 @@ const CareerPage: React.FC = () => {
               Why Join SKYBER?
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              We're not just building software – we're building the future. 
+              We&apos;re not just building software – we&apos;re building the future. 
               Join us in creating technology that makes a difference.
             </p>
           </motion.div>
@@ -297,7 +297,7 @@ const CareerPage: React.FC = () => {
                 Ready to Join Our Team?
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                While we're preparing our career opportunities, you can stay updated 
+                While we&apos;re preparing our career opportunities, you can stay updated 
                 on when positions become available
               </p>
               

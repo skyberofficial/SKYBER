@@ -1,6 +1,6 @@
 import { PolicyTemplate } from "@/components/ui/policy-template";
 
-const sections = [
+const sections: Array<{ id: string; title: string; level: 1 | 2 | 3 }> = [
   { id: "overview", title: "Overview", level: 1 },
   { id: "refund-policy", title: "Refund Policy", level: 1 },
   { id: "cancellation-policy", title: "Cancellation Policy", level: 1 },
@@ -8,7 +8,7 @@ const sections = [
   { id: "cancellation-process", title: "Cancellation Process", level: 1 },
   { id: "exceptions", title: "Exceptions", level: 1 },
   { id: "contact-information", title: "Contact Information", level: 1 }
-] as const;
+];
 
 export default function RefundCancellationPolicy() {
   return (

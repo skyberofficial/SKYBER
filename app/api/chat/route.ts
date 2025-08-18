@@ -77,7 +77,7 @@ export async function POST(req: NextRequest) {
             // Build context from relevant knowledge entries
             const relevantEntries = knowledgeData.data.slice(0, 3); // Limit to top 3 relevant entries
             knowledgeContext = "\n\nRelevant Knowledge Base Information:\n" + 
-              relevantEntries.map((entry: any) => 
+              relevantEntries.map((entry: { title: string; content: string }) => 
                 `- ${entry.title}: ${entry.content}`
               ).join('\n');
           }

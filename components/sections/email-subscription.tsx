@@ -103,7 +103,7 @@ export function EmailSubscription() {
                   <span className="font-semibold text-lg">Successfully Subscribed!</span>
                 </div>
                 <p className="text-muted-foreground mt-2">
-                  Thank you for subscribing. You'll receive our updates soon!
+                  Thank you for subscribing. You&apos;ll receive our updates soon!
                 </p>
               </motion.div>
             )}

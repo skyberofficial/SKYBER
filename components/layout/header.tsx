@@ -123,7 +123,7 @@ const Header = () => {
             </Link>
           </div>
 
-          <nav className="hidden md:flex items-center space-x-4">
+          <nav className="hidden md:flex items-center space-x-6">
             <div className="flex items-center space-x-4">
               <a 
                 href="#about" 

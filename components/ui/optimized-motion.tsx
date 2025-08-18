@@ -17,6 +17,17 @@ const MotionH3 = lazy(() => import('framer-motion').then(mod => ({ default: mod.
 const MotionP = lazy(() => import('framer-motion').then(mod => ({ default: mod.motion.p })));
 const MotionImg = lazy(() => import('framer-motion').then(mod => ({ default: mod.motion.img })));
 
+// Helper function to filter out props that conflict with Framer Motion
+const filterMotionProps = (props: any) => {
+  const { 
+    onDrag, onDragStart, onDragEnd, onDragEnter, onDragLeave, onDragOver,
+    onAnimationStart, onAnimationEnd, onAnimationIteration,
+    onTransitionEnd, onTransitionRun, onTransitionStart,
+    ...safeProps 
+  } = props;
+  return safeProps;
+};
+
 // Loading fallback
 const MotionFallback: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="animate-pulse">{children}</div>
@@ -24,88 +35,109 @@ const MotionFallback: React.FC<{ children: React.ReactNode }> = ({ children }) =
 
 // Optimized motion components
 export const OptimizedMotion = {
-  div: React.forwardRef<HTMLDivElement, any>((props, ref) => (
+  div: React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>((props, ref) => (
     <Suspense fallback={<MotionFallback><div {...props} ref={ref} /></MotionFallback>}>
-      <MotionDiv {...props} ref={ref} />
+      <MotionDiv {...filterMotionProps(props)} ref={ref} />
     </Suspense>
   )),
   
-  span: React.forwardRef<HTMLSpanElement, any>((props, ref) => (
+  span: React.forwardRef<HTMLSpanElement, React.HTMLAttributes<HTMLSpanElement>>((props, ref) => (
     <Suspense fallback={<MotionFallback><span {...props} ref={ref} /></MotionFallback>}>
-      <MotionSpan {...props} ref={ref} />
+      <MotionSpan {...filterMotionProps(props)} ref={ref} />
     </Suspense>
   )),
   
-  button: React.forwardRef<HTMLButtonElement, any>((props, ref) => (
+  button: React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement>>((props, ref) => (
     <Suspense fallback={<MotionFallback><button {...props} ref={ref} /></MotionFallback>}>
-      <MotionButton {...props} ref={ref} />
+      <MotionButton {...filterMotionProps(props)} ref={ref} />
     </Suspense>
   )),
   
-  section: React.forwardRef<HTMLElement, any>((props, ref) => (
+  section: React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>((props, ref) => (
     <Suspense fallback={<MotionFallback><section {...props} ref={ref} /></MotionFallback>}>
-      <MotionSection {...props} ref={ref} />
+      <MotionSection {...filterMotionProps(props)} ref={ref} />
     </Suspense>
   )),
   
-  article: React.forwardRef<HTMLElement, any>((props, ref) => (
+  article: React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>((props, ref) => (
     <Suspense fallback={<MotionFallback><article {...props} ref={ref} /></MotionFallback>}>
-      <MotionArticle {...props} ref={ref} />
+      <MotionArticle {...filterMotionProps(props)} ref={ref} />
     </Suspense>
   )),
   
-  nav: React.forwardRef<HTMLElement, any>((props, ref) => (
+  nav: React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>((props, ref) => (
     <Suspense fallback={<MotionFallback><nav {...props} ref={ref} /></MotionFallback>}>
-      <MotionNav {...props} ref={ref} />
+      <MotionNav {...filterMotionProps(props)} ref={ref} />
     </Suspense>
   )),
   
-  ul: React.forwardRef<HTMLUListElement, any>((props, ref) => (
+  ul: React.forwardRef<HTMLUListElement, React.HTMLAttributes<HTMLUListElement>>((props, ref) => (
     <Suspense fallback={<MotionFallback><ul {...props} ref={ref} /></MotionFallback>}>
-      <MotionUl {...props} ref={ref} />
+      <MotionUl {...filterMotionProps(props)} ref={ref} />
     </Suspense>
   )),
   
-  li: React.forwardRef<HTMLLIElement, any>((props, ref) => (
+  li: React.forwardRef<HTMLLIElement, React.LiHTMLAttributes<HTMLLIElement>>((props, ref) => (
     <Suspense fallback={<MotionFallback><li {...props} ref={ref} /></MotionFallback>}>
-      <MotionLi {...props} ref={ref} />
+      <MotionLi {...filterMotionProps(props)} ref={ref} />
     </Suspense>
   )),
   
-  h1: React.forwardRef<HTMLHeadingElement, any>((props, ref) => (
+  h1: React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>((props, ref) => (
     <Suspense fallback={<MotionFallback><h1 {...props} ref={ref} /></MotionFallback>}>
-      <MotionH1 {...props} ref={ref} />
+      <MotionH1 {...filterMotionProps(props)} ref={ref} />
     </Suspense>
   )),
   
-  h2: React.forwardRef<HTMLHeadingElement, any>((props, ref) => (
+  h2: React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>((props, ref) => (
     <Suspense fallback={<MotionFallback><h2 {...props} ref={ref} /></MotionFallback>}>
-      <MotionH2 {...props} ref={ref} />
+      <MotionH2 {...filterMotionProps(props)} ref={ref} />
     </Suspense>
   )),
   
-  h3: React.forwardRef<HTMLHeadingElement, any>((props, ref) => (
+  h3: React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>((props, ref) => (
     <Suspense fallback={<MotionFallback><h3 {...props} ref={ref} /></MotionFallback>}>
-      <MotionH3 {...props} ref={ref} />
+      <MotionH3 {...filterMotionProps(props)} ref={ref} />
     </Suspense>
   )),
   
-  p: React.forwardRef<HTMLParagraphElement, any>((props, ref) => (
+  p: React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>((props, ref) => (
     <Suspense fallback={<MotionFallback><p {...props} ref={ref} /></MotionFallback>}>
-      <MotionP {...props} ref={ref} />
+      <MotionP {...filterMotionProps(props)} ref={ref} />
     </Suspense>
   )),
   
-  img: React.forwardRef<HTMLImageElement, any>((props, ref) => (
+  img: React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => (
     <Suspense fallback={<MotionFallback><img {...props} ref={ref} /></MotionFallback>}>
-      <MotionImg {...props} ref={ref} />
+      <MotionImg {...filterMotionProps(props)} ref={ref} />
     </Suspense>
   )),
 };
 
+// Add display names to components
+OptimizedMotion.div.displayName = 'OptimizedMotion.div';
+OptimizedMotion.span.displayName = 'OptimizedMotion.span';
+OptimizedMotion.button.displayName = 'OptimizedMotion.button';
+OptimizedMotion.section.displayName = 'OptimizedMotion.section';
+OptimizedMotion.article.displayName = 'OptimizedMotion.article';
+OptimizedMotion.nav.displayName = 'OptimizedMotion.nav';
+OptimizedMotion.ul.displayName = 'OptimizedMotion.ul';
+OptimizedMotion.li.displayName = 'OptimizedMotion.li';
+OptimizedMotion.h1.displayName = 'OptimizedMotion.h1';
+OptimizedMotion.h2.displayName = 'OptimizedMotion.h2';
+OptimizedMotion.h3.displayName = 'OptimizedMotion.h3';
+OptimizedMotion.p.displayName = 'OptimizedMotion.p';
+OptimizedMotion.img.displayName = 'OptimizedMotion.img';
+
 // Hook for lazy loading Framer Motion hooks
 export const useOptimizedMotion = () => {
-  const [motionHooks, setMotionHooks] = React.useState<any>(null);
+  const [motionHooks, setMotionHooks] = React.useState<{
+    useAnimation: typeof import('framer-motion').useAnimation;
+    useMotionValue: typeof import('framer-motion').useMotionValue;
+    useTransform: typeof import('framer-motion').useTransform;
+    useSpring: typeof import('framer-motion').useSpring;
+    AnimatePresence: typeof import('framer-motion').AnimatePresence;
+  } | null>(null);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {

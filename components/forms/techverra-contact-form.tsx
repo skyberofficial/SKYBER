@@ -96,8 +96,8 @@ export function TechVerraContactForm({ isOpen, onClose, initialService, initialP
       document.body.style.width = '100%';
       
       // Also disable Lenis scrolling if available
-      if ((window as any).lenis) {
-        (window as any).lenis.stop();
+      if ((window as { lenis?: { stop: () => void } }).lenis) {
+        (window as { lenis?: { stop: () => void } }).lenis?.stop();
       }
     } else {
       // Restore scroll position and body styles
@@ -112,8 +112,8 @@ export function TechVerraContactForm({ isOpen, onClose, initialService, initialP
       }
       
       // Re-enable Lenis scrolling if available
-      if ((window as any).lenis) {
-        (window as any).lenis.start();
+      if ((window as { lenis?: { start: () => void } }).lenis) {
+        (window as { lenis?: { start: () => void } }).lenis?.start();
       }
     }
 
@@ -123,8 +123,8 @@ export function TechVerraContactForm({ isOpen, onClose, initialService, initialP
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
-      if ((window as any).lenis) {
-        (window as any).lenis.start();
+      if ((window as { lenis?: { start: () => void } }).lenis) {
+        (window as { lenis?: { start: () => void } }).lenis?.start();
       }
     };
   }, [isOpen]);

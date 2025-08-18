@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 export function MeshGradient() {
-  const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const [vantaEffect, setVantaEffect] = useState<{ destroy: () => void } | null>(null);
   const vantaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

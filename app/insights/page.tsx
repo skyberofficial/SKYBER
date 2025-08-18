@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Image from "next/image";
 import Lottie from "lottie-react";
 import CountUp from "react-countup";
 import {
@@ -594,9 +595,11 @@ const InsightsPage = () => {
                   <Card>
                     <CardContent className="pt-6">
                       <div className="flex items-start space-x-4">
-                        <img
+                        <Image
                           src={review.avatar}
                           alt={review.name}
+                          width={48}
+                          height={48}
                           className="w-12 h-12 rounded-full"
                         />
                         <div className="flex-1">

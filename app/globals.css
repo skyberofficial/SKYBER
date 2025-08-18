@@ -143,3 +143,24 @@ button *,
 a[role="button"] * {
   cursor: pointer;
 }
+
+/* TypeWriter animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@utility animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* Custom Text Selection Styling */
+::selection {
+  background-color: #63ddb3;
+  color: #000000;
+}
+
+::-moz-selection {
+  background-color: #63ddb3;
+  color: #000000;
+}
